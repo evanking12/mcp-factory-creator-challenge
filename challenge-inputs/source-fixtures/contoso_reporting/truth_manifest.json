@@ -1,0 +1,43 @@
+{
+  "fixture_id": "contoso_reporting",
+  "dll_name": "contoso_reporting.dll",
+  "depends_on": [
+    "contoso_cs.dll",
+    "contoso_payments.dll",
+    "contoso_workflow.dll"
+  ],
+  "benchmark_role": "reporting_export",
+  "sentinel_codes": {
+    "0": "RP_OK",
+    "-4001": "RP_ERR_BASE_NOT_LOADED",
+    "-4002": "RP_ERR_RESOLVE_FAILED",
+    "-4003": "RP_ERR_BADPARAM",
+    "-4004": "RP_ERR_PRECONDITION",
+    "-4005": "RP_ERR_BADREPORT",
+    "-4006": "RP_ERR_BADNONCE",
+    "-4007": "RP_ERR_STATE"
+  },
+  "canonical_flow": [
+    { "step": 1, "function": "RP_Initialize", "expected_outcome": "verified_success" },
+    { "step": 2, "function": "RP_BindCustomer", "args": { "lpszCustId": "CUST-001" }, "expected_outcome": "verified_success" },
+    { "step": 3, "function": "RP_PrepareReservationReport", "args": { "lpszSku": "ACC-USB-C", "wQty": 2, "dwHoldMinutes": 30 }, "expected_outcome": "verified_success" },
+    { "step": 4, "function": "RP_GetReportNonce", "args": { "lpszReportId": "report-from-prepare" }, "expected_outcome": "verified_success" },
+    { "step": 5, "function": "RP_SelectFormat", "args": { "lpszReportId": "report-from-prepare", "dwFormatCode": 2 }, "expected_outcome": "verified_success" },
+    { "step": 6, "function": "RP_RenderPreview", "args": { "lpszReportId": "report-from-prepare" }, "expected_outcome": "verified_success" },
+    { "step": 7, "function": "RP_ExportLedger", "args": { "lpszReportId": "report-from-prepare", "dwNonce": "nonce-from-read" }, "expected_outcome": "verified_success" }
+  ],
+  "functions": [
+    { "name": "RP_Initialize", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [] },
+    { "name": "RP_BindCustomer", "required_preconditions": ["RP_Initialize"], "expected_outcome_class": "verified_success", "canonical_args": { "lpszCustId": "CUST-001" }, "parameters": [ { "name": "lpszCustId", "type": "const char*", "resolved_type": "LPCSTR", "direction": "in", "json_type": "string", "description": "Customer identifier such as CUST-001" } ] },
+    { "name": "RP_PrepareReservationReport", "required_preconditions": ["RP_BindCustomer"], "expected_outcome_class": "verified_success", "canonical_args": { "lpszSku": "ACC-USB-C", "wQty": 2, "dwHoldMinutes": 30 }, "parameters": [ { "name": "lpszSku", "type": "const char*", "resolved_type": "LPCSTR", "direction": "in", "json_type": "string", "description": "SKU such as ACC-USB-C" }, { "name": "wQty", "type": "WORD", "resolved_type": "WORD", "direction": "in", "json_type": "integer", "description": "Reservation quantity" }, { "name": "dwHoldMinutes", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Hold time in minutes" }, { "name": "pOutReportId", "type": "char*", "resolved_type": "LPSTR", "direction": "out", "json_type": "string", "description": "Output buffer receiving the report id" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Report id output buffer size" } ] },
+    { "name": "RP_GetReportNonce", "required_preconditions": ["RP_PrepareReservationReport"], "expected_outcome_class": "verified_success", "canonical_args": { "lpszReportId": "report-from-prepare" }, "parameters": [ { "name": "lpszReportId", "type": "const char*", "resolved_type": "LPCSTR", "direction": "in", "json_type": "string", "description": "Report id returned by RP_PrepareReservationReport" }, { "name": "pdwNonceOut", "type": "DWORD*", "resolved_type": "DWORD*", "direction": "out", "json_type": "integer", "description": "Output report nonce" } ] },
+    { "name": "RP_SelectFormat", "required_preconditions": ["RP_PrepareReservationReport"], "expected_outcome_class": "verified_success", "canonical_args": { "lpszReportId": "report-from-prepare", "dwFormatCode": 2 }, "parameters": [ { "name": "lpszReportId", "type": "const char*", "resolved_type": "LPCSTR", "direction": "in", "json_type": "string", "description": "Report id returned by RP_PrepareReservationReport" }, { "name": "dwFormatCode", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Format code: 1=TXT, 2=CSV, 3=AUDIT" } ] },
+    { "name": "RP_RenderPreview", "required_preconditions": ["RP_SelectFormat"], "expected_outcome_class": "verified_success", "canonical_args": { "lpszReportId": "report-from-prepare" }, "parameters": [ { "name": "lpszReportId", "type": "const char*", "resolved_type": "LPCSTR", "direction": "in", "json_type": "string", "description": "Report id returned by RP_PrepareReservationReport" }, { "name": "pOutBuf", "type": "char*", "resolved_type": "LPSTR", "direction": "out", "json_type": "string", "description": "Output buffer receiving the preview text" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Preview output buffer size" } ] },
+    { "name": "RP_ExportLedger", "required_preconditions": ["RP_RenderPreview", "RP_GetReportNonce"], "expected_outcome_class": "verified_success", "canonical_args": { "lpszReportId": "report-from-prepare", "dwNonce": "nonce-from-read" }, "parameters": [ { "name": "lpszReportId", "type": "const char*", "resolved_type": "LPCSTR", "direction": "in", "json_type": "string", "description": "Report id returned by RP_PrepareReservationReport" }, { "name": "dwNonce", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Report nonce returned by RP_GetReportNonce" }, { "name": "pOutArtifactId", "type": "char*", "resolved_type": "LPSTR", "direction": "out", "json_type": "string", "description": "Output buffer receiving the export artifact id" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Artifact id output buffer size" } ] },
+    { "name": "RP_GetReportState", "required_preconditions": ["RP_PrepareReservationReport"], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [ { "name": "pOutBuf", "type": "char*", "resolved_type": "LPSTR", "direction": "out", "json_type": "string", "description": "Output buffer receiving the report state" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Report state output buffer size" } ] },
+    { "name": "RP_GetWorkflowHandle", "required_preconditions": ["RP_PrepareReservationReport"], "expected_outcome_class": "verified_success", "canonical_args": { "lpszReportId": "report-from-prepare" }, "parameters": [ { "name": "lpszReportId", "type": "const char*", "resolved_type": "LPCSTR", "direction": "in", "json_type": "string", "description": "Report id returned by RP_PrepareReservationReport" }, { "name": "pOutBuf", "type": "char*", "resolved_type": "LPSTR", "direction": "out", "json_type": "string", "description": "Output buffer receiving the workflow handle" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Workflow handle output buffer size" } ] },
+    { "name": "RP_GetLastErrorText", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [ { "name": "pOutBuf", "type": "char*", "resolved_type": "LPSTR", "direction": "out", "json_type": "string", "description": "Output buffer receiving the last error text" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Last error output buffer size" } ] },
+    { "name": "RP_CloseReport", "required_preconditions": ["RP_PrepareReservationReport"], "expected_outcome_class": "verified_success", "canonical_args": { "lpszReportId": "report-from-prepare" }, "parameters": [ { "name": "lpszReportId", "type": "const char*", "resolved_type": "LPCSTR", "direction": "in", "json_type": "string", "description": "Report id returned by RP_PrepareReservationReport" } ] },
+    { "name": "RP_GetDiagnostics", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [ { "name": "pOutBuf", "type": "char*", "resolved_type": "LPSTR", "direction": "out", "json_type": "string", "description": "Output buffer receiving fixture diagnostics" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Diagnostics output buffer size" } ] }
+  ]
+}

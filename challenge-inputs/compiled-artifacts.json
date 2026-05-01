@@ -1,0 +1,424 @@
+{
+  "schema_version": "creator_challenge_inputs_v1",
+  "public_bundle_policy": "source fixtures and compiled artifact metadata only; no raw compiled binaries are published",
+  "route_boundary": "The product route receives compiled/no-source artifacts. Source fixtures are included only so reviewers can inspect the synthetic ground truth and build recipe.",
+  "manifest_inputs": [
+    {
+      "path": "tests/fixtures/contoso_business_suite/package_manifest_batch_b.json",
+      "bytes": 6217,
+      "sha256": "5f93ec7999efb926d5b7103402c68c21871deaf1a2cee26e175e802d561dc8bc"
+    },
+    {
+      "path": "tests/fixtures/spectrum_transaction_release_settlement_suite/package_manifest.json",
+      "bytes": 6480,
+      "sha256": "6a4da3b281e749c608a4d9fd0b0fd3a7bce15ef236ff85f57b9b512a2391e8a0"
+    }
+  ],
+  "compiled_artifacts": [
+    {
+      "path": "tests/fixtures/contoso_config/contoso_config.obj",
+      "name": "contoso_config.obj",
+      "extension": ".obj",
+      "bytes": 22528,
+      "sha256": "56adef237a0acd0e8b29a6413610039a888c50c9f827c70c21abc907c56ee6e3",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/contoso_config/contoso_cs.dll",
+      "name": "contoso_cs.dll",
+      "extension": ".dll",
+      "bytes": 140288,
+      "sha256": "b8a6e15c6fec01301f6fe9b4c9d8b3bcc6f62665183859de3e3f066aba8211e6",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/contoso_events/contoso_events.obj",
+      "name": "contoso_events.obj",
+      "extension": ".obj",
+      "bytes": 15855,
+      "sha256": "ca1e2b44562cb3decc05a169ed20f711e32945a8d04fbaa7ea43e0b145a696bb",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/contoso_gateway/contoso_cs.dll",
+      "name": "contoso_cs.dll",
+      "extension": ".dll",
+      "bytes": 140288,
+      "sha256": "b8a6e15c6fec01301f6fe9b4c9d8b3bcc6f62665183859de3e3f066aba8211e6",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/contoso_gateway/contoso_gateway.obj",
+      "name": "contoso_gateway.obj",
+      "extension": ".obj",
+      "bytes": 15370,
+      "sha256": "84c5b3e6800fdf9f5430f7a20511f7cbbbeb65a72e9db594ae9c250dfee61cf7",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/contoso_interwoven/contoso_cs_interwoven.obj",
+      "name": "contoso_cs_interwoven.obj",
+      "extension": ".obj",
+      "bytes": 32472,
+      "sha256": "f8322ee47a08790bde6e8b0ff172b3f4a891b5096a37278be48cfb6c6f4e27a9",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/contoso_legacy/contoso_cs.obj",
+      "name": "contoso_cs.obj",
+      "extension": ".obj",
+      "bytes": 31586,
+      "sha256": "f0504c3193404c21c63a5f000fff9731e95deca749f5f712a7b391f1959b7102",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/contoso_legacy/contoso_payments.obj",
+      "name": "contoso_payments.obj",
+      "extension": ".obj",
+      "bytes": 35760,
+      "sha256": "d682e20cd64c6d6fe4efd6540a4086c686752914801730aa2c29538cc5001e51",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/contoso_pricing/contoso_pricing.obj",
+      "name": "contoso_pricing.obj",
+      "extension": ".obj",
+      "bytes": 37978,
+      "sha256": "ba1017359ace5d1839f3f15492168535491051de45bf406bf5d4f7a22df55c15",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/contoso_reporting/contoso_reporting.obj",
+      "name": "contoso_reporting.obj",
+      "extension": ".obj",
+      "bytes": 33193,
+      "sha256": "06a3e71b18dd6da4e9012e478a2367686be0f104d79cefc2b962e1fc34aa7a24",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/contoso_transport/contoso_config.dll",
+      "name": "contoso_config.dll",
+      "extension": ".dll",
+      "bytes": 138752,
+      "sha256": "5dc7db7507bcbc7bab5a89e7a68e4f68f7c43e305b94982fcde30f388d484776",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/contoso_transport/contoso_cs.dll",
+      "name": "contoso_cs.dll",
+      "extension": ".dll",
+      "bytes": 140288,
+      "sha256": "b52d1f1da895ed165541545dc6b1f49d68254a47773bf964d3d54f3a1725ba87",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/contoso_transport/contoso_transport.obj",
+      "name": "contoso_transport.obj",
+      "extension": ".obj",
+      "bytes": 19352,
+      "sha256": "c5d8b11191651a83690d81e50c9109d888bf36a4971fd91e8d85bd99ac5c8723",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/contoso_workflow/contoso_workflow.obj",
+      "name": "contoso_workflow.obj",
+      "extension": ".obj",
+      "bytes": 31042,
+      "sha256": "4b3a0275714deb23ca447997b2b1cfa9c95a26e6d1337ac176a1fe08be3f722e",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_efficiency_activation_suite/.obj/spectrum_attestation_stage.obj",
+      "name": "spectrum_attestation_stage.obj",
+      "extension": ".obj",
+      "bytes": 10903,
+      "sha256": "433e548bccd51dd6870bad1e698723db84353ae147742e0eba106a04eca6fcba",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_efficiency_activation_suite/.obj/spectrum_audit_trace.obj",
+      "name": "spectrum_audit_trace.obj",
+      "extension": ".obj",
+      "bytes": 10297,
+      "sha256": "0930a3c3f2a8d97ad2c45a22da9b2a1af8f90fa647210e03cee3fa625be5485c",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_efficiency_activation_suite/.obj/spectrum_dispatch_preview.obj",
+      "name": "spectrum_dispatch_preview.obj",
+      "extension": ".obj",
+      "bytes": 10225,
+      "sha256": "039b2eab4ebdb67c5ab8e533d9286e9b54a06e4650d182404d3b89d499e6bfdf",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_efficiency_activation_suite/.obj/spectrum_entitlement_sync.obj",
+      "name": "spectrum_entitlement_sync.obj",
+      "extension": ".obj",
+      "bytes": 10070,
+      "sha256": "7d2ee8c133ac154668c94477e9fb4988e947a35d40a4d2c2dd6a3ddcd48a96d3",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_efficiency_activation_suite/.obj/spectrum_fee_quote.obj",
+      "name": "spectrum_fee_quote.obj",
+      "extension": ".obj",
+      "bytes": 10173,
+      "sha256": "5e5693032dd45339bb0f5c47df460f93fbcce2be830cca14566b6b3fd3ee0da9",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_efficiency_activation_suite/.obj/spectrum_invoice_sync.obj",
+      "name": "spectrum_invoice_sync.obj",
+      "extension": ".obj",
+      "bytes": 9975,
+      "sha256": "cb33b4377c86819c3a537392c8063af6a3a6d8e1ad6ad02b75024678f7b6878d",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_efficiency_activation_suite/.obj/spectrum_replay_branch.obj",
+      "name": "spectrum_replay_branch.obj",
+      "extension": ".obj",
+      "bytes": 12018,
+      "sha256": "82ad72258cd9134cbc6b22c67d32096133ff334f99a105e18e66eccae6581667",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_efficiency_activation_suite/.obj/spectrum_reservation_stage.obj",
+      "name": "spectrum_reservation_stage.obj",
+      "extension": ".obj",
+      "bytes": 10882,
+      "sha256": "da0f1c87909be66e890af51cf9261312fed77d0c16f2106895e8fdb3f9312ed4",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_efficiency_activation_suite/.obj/spectrum_session_bootstrap.obj",
+      "name": "spectrum_session_bootstrap.obj",
+      "extension": ".obj",
+      "bytes": 8869,
+      "sha256": "0be1b765c7508e26573489925fd210fadcee257c6923c0f2f3957137e5368ca8",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_efficiency_activation_suite/.obj/spectrum_settlement_reconcile.obj",
+      "name": "spectrum_settlement_reconcile.obj",
+      "extension": ".obj",
+      "bytes": 12621,
+      "sha256": "b9d42475a0b182407846df140df56098443b51a124f37035f15cf78f83dac09e",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_efficiency_activation_suite/bin/spectrum_attestation_stage.dll",
+      "name": "spectrum_attestation_stage.dll",
+      "extension": ".dll",
+      "bytes": 134656,
+      "sha256": "65ba20bc8497b32a3bd5d21802364d4dec3dca3e56f44debaf9471c8ff7f5f65",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_efficiency_activation_suite/bin/spectrum_audit_trace.dll",
+      "name": "spectrum_audit_trace.dll",
+      "extension": ".dll",
+      "bytes": 134656,
+      "sha256": "bc56f5d01cb35529f41f1abfa0aae55512db360adf85f076a8ec244d71510aba",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_efficiency_activation_suite/bin/spectrum_dispatch_preview.dll",
+      "name": "spectrum_dispatch_preview.dll",
+      "extension": ".dll",
+      "bytes": 134656,
+      "sha256": "0b60ca1a84ebdb924f0fd3088892c01c17542709ca4d6070c1baf48927e49417",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_efficiency_activation_suite/bin/spectrum_entitlement_sync.dll",
+      "name": "spectrum_entitlement_sync.dll",
+      "extension": ".dll",
+      "bytes": 134144,
+      "sha256": "ba2af16015ef739d43f8c9ac9f9d702814671da06a411b9e3d7472d46e153c90",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_efficiency_activation_suite/bin/spectrum_fee_quote.dll",
+      "name": "spectrum_fee_quote.dll",
+      "extension": ".dll",
+      "bytes": 134656,
+      "sha256": "1df4d208b9ffecb1b5ff1eaa041ee60091da4adbfd1d515e61963f2947b0de0f",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_efficiency_activation_suite/bin/spectrum_invoice_sync.dll",
+      "name": "spectrum_invoice_sync.dll",
+      "extension": ".dll",
+      "bytes": 134144,
+      "sha256": "90b4a1361eb03eb0a1dda0a72a8cfac4aefc86d67eebecbdebc0a97b8d2cf385",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_efficiency_activation_suite/bin/spectrum_replay_branch.dll",
+      "name": "spectrum_replay_branch.dll",
+      "extension": ".dll",
+      "bytes": 135168,
+      "sha256": "5c4a12333237bea3643445b94dca39a7b1e89b9e93c8b41d45af41c0f796d65d",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_efficiency_activation_suite/bin/spectrum_reservation_stage.dll",
+      "name": "spectrum_reservation_stage.dll",
+      "extension": ".dll",
+      "bytes": 135168,
+      "sha256": "f89927968d4872fbb8cf75459cb769f619d0cdda0d51c016be049ca68f350846",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_efficiency_activation_suite/bin/spectrum_session_bootstrap.dll",
+      "name": "spectrum_session_bootstrap.dll",
+      "extension": ".dll",
+      "bytes": 134144,
+      "sha256": "ea7c6e7926cd19f35a13a43e9f219b4b8342afdbe9fcf1b60e4fe996395e2d37",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_efficiency_activation_suite/bin/spectrum_settlement_reconcile.dll",
+      "name": "spectrum_settlement_reconcile.dll",
+      "extension": ".dll",
+      "bytes": 134656,
+      "sha256": "143df5e19ce4a8a76c00aa525c7dd879fbb8fe146ea96c50b70a1b67e96f33a1",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_transaction_release_settlement_suite/.obj/spectrum_attestation_stage.obj",
+      "name": "spectrum_attestation_stage.obj",
+      "extension": ".obj",
+      "bytes": 8676,
+      "sha256": "c985536163c02ab8466062bf9486c33196beb455e0dd45dd557464d41d7be506",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_transaction_release_settlement_suite/.obj/spectrum_audit_trace.obj",
+      "name": "spectrum_audit_trace.obj",
+      "extension": ".obj",
+      "bytes": 10415,
+      "sha256": "437aef6189cf0249847f2416467ab722c97b7824c493a745e218608d797684f0",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_transaction_release_settlement_suite/.obj/spectrum_dispatch_preview.obj",
+      "name": "spectrum_dispatch_preview.obj",
+      "extension": ".obj",
+      "bytes": 8163,
+      "sha256": "8546a5fdfa762ffb14c16a79a84148cbedc3fd0508c51b1e11140d81070b566e",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_transaction_release_settlement_suite/.obj/spectrum_entitlement_sync.obj",
+      "name": "spectrum_entitlement_sync.obj",
+      "extension": ".obj",
+      "bytes": 7981,
+      "sha256": "d1bdf0528048adc43003d51211f7f9421a72976e6bebda42bf93299bbe02fbb7",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_transaction_release_settlement_suite/.obj/spectrum_fee_quote.obj",
+      "name": "spectrum_fee_quote.obj",
+      "extension": ".obj",
+      "bytes": 8144,
+      "sha256": "69ee0eccd27b123e9057b9d7c9819f790d8339bfce71a2ee924fe88f3af1143c",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_transaction_release_settlement_suite/.obj/spectrum_invoice_sync.obj",
+      "name": "spectrum_invoice_sync.obj",
+      "extension": ".obj",
+      "bytes": 7924,
+      "sha256": "31e1ff190511bd547c15674dfceaf825a871d2fe7ecc482c114f1facea5d92aa",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_transaction_release_settlement_suite/.obj/spectrum_release_commit.obj",
+      "name": "spectrum_release_commit.obj",
+      "extension": ".obj",
+      "bytes": 8132,
+      "sha256": "7ca3acdad1a112323f5d4c0501de039056af3b4a5140f4cfe7c17d6446072a65",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_transaction_release_settlement_suite/.obj/spectrum_replay_branch.obj",
+      "name": "spectrum_replay_branch.obj",
+      "extension": ".obj",
+      "bytes": 8116,
+      "sha256": "dfba15fd70fe1f334a9512ab97207d5be60d3ef878fea25a3b33011f3a215d78",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_transaction_release_settlement_suite/.obj/spectrum_reservation_stage.obj",
+      "name": "spectrum_reservation_stage.obj",
+      "extension": ".obj",
+      "bytes": 8837,
+      "sha256": "39426cee0f517b413c8ed1d032f7183247ffc38913cb439b0977b70ead7d6c79",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_transaction_release_settlement_suite/.obj/spectrum_session_bootstrap.obj",
+      "name": "spectrum_session_bootstrap.obj",
+      "extension": ".obj",
+      "bytes": 6169,
+      "sha256": "52dce7b89a1896571ea3c455ddaed3f51a59ddb95e2be622895e3bb316a40912",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    },
+    {
+      "path": "tests/fixtures/spectrum_transaction_release_settlement_suite/.obj/spectrum_settlement_reconcile.obj",
+      "name": "spectrum_settlement_reconcile.obj",
+      "extension": ".obj",
+      "bytes": 17411,
+      "sha256": "05f2fb7a8f1220e25fa1d9d4361651bade8e142922af02466f96bb0debbd3d06",
+      "published_in_demo": false,
+      "public_reason": "metadata only; raw compiled artifacts are not bundled in the public static demo"
+    }
+  ]
+}

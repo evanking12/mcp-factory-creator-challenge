@@ -1,0 +1,147 @@
+{
+  "package_id": "spectrum-transaction-release-settlement-suite",
+  "package_label": "Spectrum Transaction Release Settlement Suite",
+  "package_purpose": "Compiled binary proving package for the Spectrum easy-01 ingest correction.",
+  "doc_visibility": "known_fixture",
+  "dependency_context": "sibling_install_folder",
+  "operator_notes": "Use upload as the canonical entry surface for the first compiled Spectrum proof.",
+  "bundle_name": "spectrum-transaction-release-settlement-suite",
+  "stage_root": ".tmp/fixture-packages/spectrum-transaction-release-settlement-suite",
+  "zip_path": ".tmp/fixture-packages/spectrum-transaction-release-settlement-suite.zip",
+  "package_context": {
+    "package_shape": "install_folder",
+    "curated_runtime_subset": true,
+    "proving_goal": "compiled_easy01_ingest",
+    "suite_role": "first_product_valid_spectrum_suite"
+  },
+  "bundled_dlls": [
+    {
+      "staged_name": "spectrum_session_bootstrap.dll",
+      "source_path": "tests/fixtures/spectrum_transaction_release_settlement_suite/bin/spectrum_session_bootstrap.dll",
+      "role": "runtime_target",
+      "dependency_confidence": "high",
+      "selection_reason": "easy01_anchor_session"
+    },
+    {
+      "staged_name": "spectrum_reservation_stage.dll",
+      "source_path": "tests/fixtures/spectrum_transaction_release_settlement_suite/bin/spectrum_reservation_stage.dll",
+      "role": "runtime_target",
+      "dependency_confidence": "high",
+      "selection_reason": "easy01_hold_gate"
+    },
+    {
+      "staged_name": "spectrum_dispatch_preview.dll",
+      "source_path": "tests/fixtures/spectrum_transaction_release_settlement_suite/bin/spectrum_dispatch_preview.dll",
+      "role": "dependency_only",
+      "dependency_confidence": "medium"
+    },
+    {
+      "staged_name": "spectrum_fee_quote.dll",
+      "source_path": "tests/fixtures/spectrum_transaction_release_settlement_suite/bin/spectrum_fee_quote.dll",
+      "role": "dependency_only",
+      "dependency_confidence": "medium"
+    },
+    {
+      "staged_name": "spectrum_attestation_stage.dll",
+      "source_path": "tests/fixtures/spectrum_transaction_release_settlement_suite/bin/spectrum_attestation_stage.dll",
+      "role": "dependency_only",
+      "dependency_confidence": "medium"
+    },
+    {
+      "staged_name": "spectrum_invoice_sync.dll",
+      "source_path": "tests/fixtures/spectrum_transaction_release_settlement_suite/bin/spectrum_invoice_sync.dll",
+      "role": "dependency_only",
+      "dependency_confidence": "medium"
+    },
+    {
+      "staged_name": "spectrum_entitlement_sync.dll",
+      "source_path": "tests/fixtures/spectrum_transaction_release_settlement_suite/bin/spectrum_entitlement_sync.dll",
+      "role": "dependency_only",
+      "dependency_confidence": "medium"
+    },
+    {
+      "staged_name": "spectrum_release_commit.dll",
+      "source_path": "tests/fixtures/spectrum_transaction_release_settlement_suite/bin/spectrum_release_commit.dll",
+      "role": "runtime_target",
+      "dependency_confidence": "high",
+      "selection_reason": "easy01_commit_gate"
+    },
+    {
+      "staged_name": "spectrum_replay_branch.dll",
+      "source_path": "tests/fixtures/spectrum_transaction_release_settlement_suite/bin/spectrum_replay_branch.dll",
+      "role": "dependency_only",
+      "dependency_confidence": "medium"
+    },
+    {
+      "staged_name": "spectrum_settlement_reconcile.dll",
+      "source_path": "tests/fixtures/spectrum_transaction_release_settlement_suite/bin/spectrum_settlement_reconcile.dll",
+      "role": "dependency_only",
+      "dependency_confidence": "medium"
+    },
+        {
+            "staged_name": "spectrum_audit_trace.dll",
+            "source_path": "tests/fixtures/spectrum_transaction_release_settlement_suite/bin/spectrum_audit_trace.dll",
+            "role": "runtime_target",
+            "dependency_confidence": "high",
+            "selection_reason": "easy01_audit_receipt"
+        },
+        {
+            "staged_name": "spectrum_quarantine_gate.dll",
+            "source_path": "tests/fixtures/spectrum_transaction_release_settlement_suite/bin/spectrum_quarantine_gate.dll",
+            "role": "runtime_target",
+            "dependency_confidence": "high",
+            "selection_reason": "hard03_unsupported_target_quarantine_gate"
+        },
+        {
+            "staged_name": "spectrum_quarantine_audit.dll",
+            "source_path": "tests/fixtures/spectrum_transaction_release_settlement_suite/bin/spectrum_quarantine_audit.dll",
+            "role": "runtime_target",
+            "dependency_confidence": "high",
+            "selection_reason": "hard03_unsupported_target_quarantine_audit"
+        }
+    ],
+  "selected_runtime_targets": [
+    {
+      "staged_name": "spectrum_session_bootstrap.dll",
+      "source_path": "tests/fixtures/spectrum_transaction_release_settlement_suite/bin/spectrum_session_bootstrap.dll",
+      "target_name": "session_bootstrap",
+      "selection_reason": "easy01_anchor_session",
+      "dependency_confidence": "high",
+      "lane_id": "lane-1"
+    },
+    {
+      "staged_name": "spectrum_reservation_stage.dll",
+      "source_path": "tests/fixtures/spectrum_transaction_release_settlement_suite/bin/spectrum_reservation_stage.dll",
+      "target_name": "reservation_stage",
+      "selection_reason": "easy01_hold_gate",
+      "dependency_confidence": "high",
+      "lane_id": "lane-1"
+    },
+    {
+      "staged_name": "spectrum_release_commit.dll",
+      "source_path": "tests/fixtures/spectrum_transaction_release_settlement_suite/bin/spectrum_release_commit.dll",
+      "target_name": "release_commit",
+      "selection_reason": "easy01_commit_gate",
+      "dependency_confidence": "high",
+      "lane_id": "lane-1"
+    },
+    {
+      "staged_name": "spectrum_audit_trace.dll",
+      "source_path": "tests/fixtures/spectrum_transaction_release_settlement_suite/bin/spectrum_audit_trace.dll",
+      "target_name": "audit_trace",
+      "selection_reason": "easy01_audit_receipt",
+      "dependency_confidence": "high",
+      "lane_id": "lane-1"
+    }
+  ],
+  "support_files": [
+    {
+      "relative_path": "README.txt",
+      "contents": "Compiled Spectrum package for easy-01 upload-lane proof."
+    },
+    {
+      "relative_path": "config/spectrum.ini",
+      "contents": "[suite]\nname=spectrum\nproof=compiled_easy01\n"
+    }
+  ]
+}

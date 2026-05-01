@@ -1,0 +1,283 @@
+{
+  "run_id": "medium02",
+  "claim_ceiling": "product-green baseline replay",
+  "artifact_mode": "sanitized_derived_sidecars_only",
+  "stage_artifacts": [
+    {
+      "stage": "S00",
+      "name": "Compiled/no-source admission",
+      "purpose": "Accept the compiled binary fixture as the product-route input and keep authored source out of the route.",
+      "consumes": [
+        {
+          "stage": "S00",
+          "role": "consume",
+          "name": "compiled binary fixture input",
+          "kind": "input boundary",
+          "status": "pass",
+          "availability": "described_not_downloaded",
+          "value_source": "actual_artifact",
+          "proof_meaning": "The replay represents compiled/no-source analysis. Public demo does not publish binaries."
+        },
+        {
+          "stage": "S00",
+          "role": "consume",
+          "name": "synthetic source ground truth",
+          "kind": "evaluation-only reference",
+          "status": "warn",
+          "availability": "not_route_input",
+          "value_source": "derived_summary",
+          "proof_meaning": "Source exists to judge fixture correctness, but the product route does not receive it.",
+          "unavailable_reason": "Not exposed as product-route evidence because it is not the route input."
+        }
+      ],
+      "emits": [
+        {
+          "stage": "S00",
+          "role": "emit",
+          "name": "compiled admission summary",
+          "kind": "sanitized stage summary",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "Records the no-source route boundary used by the replay.",
+          "link": "data/runs/medium02/stage-artifacts.json"
+        }
+      ],
+      "proves": [
+        {
+          "stage": "S00",
+          "role": "prove",
+          "name": "source boundary",
+          "kind": "claim guard",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "Prevents the demo from overclaiming source-assisted recovery.",
+          "link": "data/runs/medium02/stage-artifacts.md"
+        }
+      ]
+    },
+    {
+      "stage": "S00B-S02",
+      "name": "Ghidra-backed route authority",
+      "purpose": "Prove the intended compiled-analysis route was entered before downstream artifacts are trusted.",
+      "consumes": [
+        {
+          "stage": "S00B-S02",
+          "role": "consume",
+          "name": "compiled ingest summary",
+          "kind": "pinned baseline summary",
+          "status": "pass",
+          "availability": "derived_fields_only",
+          "value_source": "actual_artifact",
+          "proof_meaning": "Provides sanitized route, lane, bridge, and readiness fields.",
+          "link": "data/runs/medium02/stage-artifacts.json",
+          "path": "configs/regression/pinned_baselines/spectrum_transaction_release_settlement_suite/medium-02/20260424-104245/compiled-ingest-summary.json"
+        }
+      ],
+      "emits": [
+        {
+          "stage": "S00B-S02",
+          "role": "emit",
+          "name": "route authority evidence",
+          "kind": "authority packet",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "route_authority_present=True.",
+          "link": "data/runs/medium02/stage-artifacts.json"
+        },
+        {
+          "stage": "S00B-S02",
+          "role": "emit",
+          "name": "recovery backend boundary",
+          "kind": "tool-route marker",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "ghidra_required=True.",
+          "link": "data/runs/medium02/stage-artifacts.md"
+        }
+      ],
+      "proves": [
+        {
+          "stage": "S00B-S02",
+          "role": "prove",
+          "name": "compiled route trust",
+          "kind": "claim precondition",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "Downstream target evidence can be read only if route authority is present.",
+          "link": "data/runs/medium02/stage-artifacts.json"
+        }
+      ]
+    },
+    {
+      "stage": "S02-S05",
+      "name": "Target analysis runs",
+      "purpose": "Replay per-target analysis results and expose the recovered run evidence without publishing raw sessions.",
+      "consumes": [
+        {
+          "stage": "S02-S05",
+          "role": "consume",
+          "name": "target run records",
+          "kind": "pinned baseline run list",
+          "status": "pass",
+          "availability": "derived_fields_only",
+          "value_source": "actual_artifact",
+          "proof_meaning": "8 target records available in sanitized form.",
+          "link": "data/runs/medium02/stage-artifacts.json"
+        }
+      ],
+      "emits": [
+        {
+          "stage": "S02-S05",
+          "role": "emit",
+          "name": "target evidence table",
+          "kind": "sanitized run evidence",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "8/8 target records are valid_run=true.",
+          "link": "data/runs/medium02/stage-artifacts.json"
+        },
+        {
+          "stage": "S02-S05",
+          "role": "emit",
+          "name": "recovered symbols and invocables",
+          "kind": "derived recovery evidence",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "Recovered symbol flow is summarized for inspection without raw analyzer output.",
+          "link": "data/runs/medium02/stage-artifacts.md"
+        }
+      ],
+      "proves": [
+        {
+          "stage": "S02-S05",
+          "role": "prove",
+          "name": "run evidence breadth",
+          "kind": "coverage signal",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "Shows whether the run has enough per-target evidence to support comparison.",
+          "link": "data/runs/medium02/stage-artifacts.json"
+        }
+      ]
+    },
+    {
+      "stage": "S03-S06",
+      "name": "Semantic checkpoint comparison",
+      "purpose": "Compare expected semantic checkpoints against recovered symbols and run evidence.",
+      "consumes": [
+        {
+          "stage": "S03-S06",
+          "role": "consume",
+          "name": "compiled ingest comparison report",
+          "kind": "comparison report",
+          "status": "pass",
+          "availability": "derived_fields_only",
+          "value_source": "actual_artifact",
+          "proof_meaning": "Provides expected, discovered, and semantic symbol-flow summaries.",
+          "link": "data/runs/medium02/stage-artifacts.json",
+          "path": "configs/regression/pinned_baselines/spectrum_transaction_release_settlement_suite/medium-02/20260424-104245/compiled-ingest-compare-report.json"
+        }
+      ],
+      "emits": [
+        {
+          "stage": "S03-S06",
+          "role": "emit",
+          "name": "semantic checkpoint alignment",
+          "kind": "comparison result",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "semantic_checkpoint_alignment_succeeded=True.",
+          "link": "data/runs/medium02/stage-artifacts.json"
+        },
+        {
+          "stage": "S03-S06",
+          "role": "emit",
+          "name": "gap summary",
+          "kind": "failure boundary signal",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "semantic_gaps=0, embodiment_gaps=0.",
+          "link": "data/runs/medium02/stage-artifacts.md"
+        }
+      ],
+      "proves": [
+        {
+          "stage": "S03-S06",
+          "role": "prove",
+          "name": "safe comparison precondition",
+          "kind": "semantic proof",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "Shows whether recovered behavior aligns with the expected checkpoint sequence.",
+          "link": "data/runs/medium02/stage-artifacts.json"
+        }
+      ]
+    },
+    {
+      "stage": "S07",
+      "name": "Claim ceiling and closeout",
+      "purpose": "Emit the final replay claim ceiling, comparability state, and next action.",
+      "consumes": [
+        {
+          "stage": "S07",
+          "role": "consume",
+          "name": "stage trace and metrics",
+          "kind": "OpenTelemetry-shaped sidecars",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "Final claim uses sanitized trace, metrics, and comparison summaries.",
+          "link": "data/runs/medium02/run-trace.json"
+        }
+      ],
+      "emits": [
+        {
+          "stage": "S07",
+          "role": "emit",
+          "name": "final claim ceiling",
+          "kind": "closeout decision",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "product-green baseline replay",
+          "link": "data/runs/medium02/run-metrics.json"
+        },
+        {
+          "stage": "S07",
+          "role": "emit",
+          "name": "first failed boundary",
+          "kind": "blocker routing",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "first_failed_boundary=none.",
+          "link": "data/runs/medium02/stage-artifacts.md"
+        }
+      ],
+      "proves": [
+        {
+          "stage": "S07",
+          "role": "prove",
+          "name": "safe-to-compare state",
+          "kind": "claim guard",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "safe_to_compare=True.",
+          "link": "data/runs/medium02/stage-artifacts.json"
+        }
+      ]
+    }
+  ]
+}

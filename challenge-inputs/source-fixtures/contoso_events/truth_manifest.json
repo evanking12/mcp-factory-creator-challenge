@@ -1,0 +1,38 @@
+{
+  "fixture_id": "contoso_events",
+  "dll_name": "contoso_events.dll",
+  "depends_on": [
+    "contoso_transport.dll",
+    "contoso_config.dll"
+  ],
+  "benchmark_role": "callbacks_flags",
+  "sentinel_codes": {
+    "0": "EV_OK",
+    "-8001": "EV_ERR_ENV",
+    "-8002": "EV_ERR_BADPARAM",
+    "-8003": "EV_ERR_PRECONDITION",
+    "-8004": "EV_ERR_BADHANDLE",
+    "-8005": "EV_ERR_CALLBACK",
+    "-8006": "EV_ERR_FLAGSTATE"
+  },
+  "canonical_flow": [
+    { "step": 1, "function": "EV_Initialize", "expected_outcome": "verified_success" },
+    { "step": 2, "function": "EV_SetChannel", "args": { "dwMode": 1 }, "expected_outcome": "verified_success" },
+    { "step": 3, "function": "EV_OpenEventSession", "args": { "dwTransportHandle": 1073745921 }, "expected_outcome": "verified_success" },
+    { "step": 4, "function": "EV_RegisterMask", "args": { "dwEventSession": "session-from-open", "dwEventMask": 3 }, "expected_outcome": "verified_success" },
+    { "step": 5, "function": "EV_ReplayMask", "args": { "dwEventSession": "session-from-open", "dwEventMask": 3 }, "expected_outcome": "verified_success" }
+  ],
+  "functions": [
+    { "name": "EV_Initialize", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [] },
+    { "name": "EV_SetChannel", "required_preconditions": [ "EV_Initialize" ], "expected_outcome_class": "verified_success", "canonical_args": { "dwMode": 1 }, "parameters": [ { "name": "dwMode", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "1=audit, 2=notify, 3=export" } ] },
+    { "name": "EV_OpenEventSession", "required_preconditions": [ "EV_Initialize" ], "expected_outcome_class": "verified_success", "canonical_args": { "dwTransportHandle": 1073745921 }, "parameters": [ { "name": "dwTransportHandle", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Opaque transport handle" }, { "name": "pdwEventSessionOut", "type": "DWORD*", "resolved_type": "DWORD*", "direction": "out", "json_type": "integer", "description": "Output event session handle" } ] },
+    { "name": "EV_RegisterMask", "required_preconditions": [ "EV_OpenEventSession" ], "expected_outcome_class": "verified_success", "canonical_args": { "dwEventSession": "session-from-open", "dwEventMask": 3 }, "parameters": [ { "name": "dwEventSession", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Opaque event session handle" }, { "name": "dwEventMask", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Event flag mask" } ] },
+    { "name": "EV_ReplayMask", "required_preconditions": [ "EV_OpenEventSession" ], "expected_outcome_class": "verified_success", "canonical_args": { "dwEventSession": "session-from-open", "dwEventMask": 3 }, "parameters": [ { "name": "dwEventSession", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Opaque event session handle" }, { "name": "dwEventMask", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Event flag mask" }, { "name": "pdwAppliedMaskOut", "type": "DWORD*", "resolved_type": "DWORD*", "direction": "out", "json_type": "integer", "description": "Output applied mask" } ] },
+    { "name": "EV_EnumerateCustomers", "required_preconditions": [], "expected_outcome_class": "unknown", "canonical_args": {}, "parameters": [ { "name": "pfnCallback", "type": "EV_ENUM_CALLBACK", "resolved_type": "EV_ENUM_CALLBACK", "direction": "in", "json_type": "integer", "description": "Callback pointer" }, { "name": "pContext", "type": "void*", "resolved_type": "void*", "direction": "in", "json_type": "integer", "description": "Callback context pointer" } ] },
+    { "name": "EV_RegisterHandler", "required_preconditions": [ "EV_OpenEventSession" ], "expected_outcome_class": "unknown", "canonical_args": {}, "parameters": [ { "name": "dwEventSession", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Opaque event session handle" }, { "name": "dwEventMask", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Event flag mask" }, { "name": "pfnCallback", "type": "EV_ENUM_CALLBACK", "resolved_type": "EV_ENUM_CALLBACK", "direction": "in", "json_type": "integer", "description": "Callback pointer" }, { "name": "pContext", "type": "void*", "resolved_type": "void*", "direction": "in", "json_type": "integer", "description": "Callback context pointer" } ] },
+    { "name": "EV_GetModeName", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": { "dwMode": 1 }, "parameters": [ { "name": "dwMode", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Event mode enum" }, { "name": "pOutBuf", "type": "char*", "resolved_type": "LPSTR", "direction": "out", "json_type": "string", "description": "Output mode name" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Mode buffer size" } ] },
+    { "name": "EV_CloseEventSession", "required_preconditions": [ "EV_OpenEventSession" ], "expected_outcome_class": "verified_success", "canonical_args": { "dwEventSession": "session-from-open" }, "parameters": [ { "name": "dwEventSession", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Opaque event session handle" } ] },
+    { "name": "EV_GetLastErrorText", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [ { "name": "pOutBuf", "type": "char*", "resolved_type": "LPSTR", "direction": "out", "json_type": "string", "description": "Output last-error buffer" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Error buffer size" } ] },
+    { "name": "EV_GetDiagnostics", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [ { "name": "pOutBuf", "type": "char*", "resolved_type": "LPSTR", "direction": "out", "json_type": "string", "description": "Output diagnostics buffer" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Diagnostics buffer size" } ] }
+  ]
+}

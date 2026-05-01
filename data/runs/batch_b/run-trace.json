@@ -1,0 +1,70 @@
+{
+  "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+  "spans": [
+    {
+      "span_id": "c96902d6956eafb8",
+      "name": "Package admission",
+      "stage": "Floor 0",
+      "duration_sec": 0,
+      "status": "pass",
+      "message": "Package metadata preserves bundled binary roles before runtime probing.",
+      "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+      "span_key": "package_admission",
+      "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled",
+      "value_source": "derived_summary",
+      "run_id": "batch_b",
+      "suite_id": "contoso-business-suite",
+      "case_id": "contoso-business-suite-batch-b",
+      "target_name": "package"
+    },
+    {
+      "span_id": "18cc2c2ee629961a",
+      "name": "Runtime target selection",
+      "stage": "Floor 1",
+      "duration_sec": 0,
+      "status": "pass",
+      "message": "8 runtime targets selected from 10 bundled binaries.",
+      "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+      "span_key": "target_selection",
+      "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled",
+      "value_source": "derived_summary",
+      "run_id": "batch_b",
+      "suite_id": "contoso-business-suite",
+      "case_id": "contoso-business-suite-batch-b",
+      "target_name": "package"
+    },
+    {
+      "span_id": "063c93404194509e",
+      "name": "Batch B campaign execution",
+      "stage": "Floor 2",
+      "duration_sec": 0,
+      "status": "partial",
+      "message": "Live campaign b32b323a reached 7/8 terminal rows; reporting produced findings but stalled in closeout.",
+      "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+      "span_key": "batch_b_execution",
+      "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled",
+      "value_source": "derived_summary",
+      "run_id": "batch_b",
+      "suite_id": "contoso-business-suite",
+      "case_id": "contoso-business-suite-batch-b",
+      "target_name": "package"
+    },
+    {
+      "span_id": "10991282bcc85ff0",
+      "name": "Reporting closeout",
+      "stage": "Floor 3",
+      "duration_sec": 0,
+      "status": "warn",
+      "message": "contoso_reporting stayed exploring/running after writing findings; this is closeout/status risk, not a clean campaign finish.",
+      "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+      "span_key": "reporting_closeout",
+      "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled",
+      "value_source": "derived_summary",
+      "run_id": "batch_b",
+      "suite_id": "contoso-business-suite",
+      "case_id": "contoso-business-suite-batch-b",
+      "target_name": "package"
+    }
+  ],
+  "claim_ceiling": "telemetry is diagnostic evidence only"
+}

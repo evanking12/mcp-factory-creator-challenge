@@ -1,0 +1,101 @@
+{
+  "package_id": "contoso-business-suite",
+  "package_label": "Contoso Business Suite",
+  "package_purpose": "Package-mode blocker-harvest proving ground built from the Contoso fixture family.",
+  "doc_visibility": "known_fixture",
+  "dependency_context": "sibling_install_folder",
+  "operator_notes": "Use this package to test blocker-family harvesting with curated runtime targets instead of isolated single-DLL runs.",
+  "bundle_name": "contoso-business-suite",
+  "stage_root": ".tmp/fixture-packages/contoso-business-suite",
+  "zip_path": ".tmp/fixture-packages/contoso-business-suite.zip",
+  "package_context": {
+    "package_shape": "install_folder",
+    "curated_runtime_subset": true,
+    "proving_goal": "package_mode_blocker_harvest",
+    "suite_role": "control_before_external_packages"
+  },
+  "bundled_dlls": [
+    {
+      "staged_name": "contoso_cs.dll",
+      "source_path": "tests/fixtures/contoso_legacy/contoso_cs.dll",
+      "role": "dependency_only",
+      "dependency_confidence": "high"
+    },
+    {
+      "staged_name": "contoso_payments.dll",
+      "source_path": "tests/fixtures/contoso_legacy/contoso_payments.dll",
+      "role": "dependency_only",
+      "dependency_confidence": "high"
+    },
+    {
+      "staged_name": "contoso_config.dll",
+      "source_path": "tests/fixtures/contoso_transport/contoso_config.dll",
+      "role": "runtime_target",
+      "dependency_confidence": "high",
+      "selection_reason": "environment_gate_canary"
+    },
+    {
+      "staged_name": "contoso_transport.dll",
+      "source_path": "tests/fixtures/contoso_events/contoso_transport.dll",
+      "role": "runtime_target",
+      "dependency_confidence": "high",
+      "selection_reason": "struct_handle_canary"
+    },
+    {
+      "staged_name": "contoso_workflow.dll",
+      "source_path": "tests/fixtures/contoso_workflow/contoso_workflow.dll",
+      "role": "runtime_target",
+      "dependency_confidence": "high",
+      "selection_reason": "state_sequence_canary",
+      "build_script": "tests/fixtures/contoso_workflow/build-workflow.ps1"
+    },
+    {
+      "staged_name": "contoso_reporting.dll",
+      "source_path": "tests/fixtures/contoso_reporting/contoso_reporting_live.dll",
+      "role": "runtime_target",
+      "dependency_confidence": "medium",
+      "selection_reason": "readback_artifact_canary",
+      "source_note": "Committed reporting binary is the live variant; stage it under the canonical filename for package-mode testing."
+    }
+  ],
+  "selected_runtime_targets": [
+    {
+      "staged_name": "contoso_config.dll",
+      "selection_reason": "environment_gate_canary",
+      "dependency_confidence": "high",
+      "lane_id": "lane-1"
+    },
+    {
+      "staged_name": "contoso_transport.dll",
+      "selection_reason": "struct_handle_canary",
+      "dependency_confidence": "high",
+      "lane_id": "lane-1"
+    },
+    {
+      "staged_name": "contoso_workflow.dll",
+      "selection_reason": "state_sequence_canary",
+      "dependency_confidence": "high",
+      "lane_id": "lane-1"
+    },
+    {
+      "staged_name": "contoso_reporting.dll",
+      "selection_reason": "readback_artifact_canary",
+      "dependency_confidence": "medium",
+      "lane_id": "lane-1"
+    }
+  ],
+  "support_files": [
+    {
+      "relative_path": "README.txt",
+      "contents": "Contoso Business Suite fixture package. Generated for package-mode blocker-harvest testing."
+    },
+    {
+      "relative_path": "config/defaults.ini",
+      "contents": "[suite]\nmode=fixture\ntelemetry=off\n"
+    },
+    {
+      "relative_path": "plugins/disabled/README.txt",
+      "contents": "Placeholder plugin folder used to simulate a modest install footprint without adding random DLL noise."
+    }
+  ]
+}

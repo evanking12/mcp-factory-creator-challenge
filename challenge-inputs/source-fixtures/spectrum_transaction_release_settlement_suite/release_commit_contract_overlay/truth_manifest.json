@@ -1,0 +1,48 @@
+{
+  "dll_name": "spectrum_release_commit.dll",
+  "fixture_id": "spectrum_release_commit_contract_overlay",
+  "functions": [
+    {
+      "name": "SP_CommitRelease",
+      "benchmark_role": "hard01_primary_commit_gate",
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {
+        "reservation_handle": "sp-resv-ORD-001-4200",
+        "hold_token": "sp-hold-ORD-001-4200"
+      },
+      "calling_convention": "cdecl",
+      "return_type": "int",
+      "signature": "int __cdecl SP_CommitRelease(const char* reservation_handle, const char* hold_token, char* out_commit_receipt, DWORD out_len)",
+      "parameters": [
+        {
+          "name": "reservation_handle",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "hold_token",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "out_commit_receipt",
+          "type": "char*",
+          "resolved_type": "char*",
+          "direction": "out",
+          "json_type": "string"
+        },
+        {
+          "name": "out_len",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer"
+        }
+      ]
+    }
+  ]
+}

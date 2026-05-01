@@ -1,0 +1,78 @@
+{
+  "dll_name": "spectrum_reservation_stage.dll",
+  "fixture_id": "spectrum_reservation_stage_contract_overlay",
+  "functions": [
+    {
+      "name": "SP_IssueReleaseHold",
+      "benchmark_role": "medium01_first_lineage_materializer",
+      "expected_outcome_class": "verified_success",
+      "required_preconditions": [
+        "SP_OpenOperatorSession"
+      ],
+      "functional_precondition_example": "SP_OpenOperatorSession({'operator_id':'ORD-001','out_operator_token':'','out_len':256}) -> out_operator_token='sp-operator-ORD-001-session'",
+      "canonical_args": {
+        "operator_token": "sp-operator-ORD-001-session",
+        "order_id": "ORD-001",
+        "amount_cents": 4200,
+        "out_reservation_handle": "",
+        "reservation_len": 256,
+        "out_hold_token": "",
+        "hold_len": 256
+      },
+      "calling_convention": "cdecl",
+      "return_type": "int",
+      "signature": "int __cdecl SP_IssueReleaseHold(const char* operator_token, const char* order_id, uint32_t amount_cents, char* out_reservation_handle, DWORD reservation_len, char* out_hold_token, DWORD hold_len)",
+      "parameters": [
+        {
+          "name": "operator_token",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "order_id",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "amount_cents",
+          "type": "uint32_t",
+          "resolved_type": "uint32_t",
+          "direction": "in",
+          "json_type": "integer"
+        },
+        {
+          "name": "out_reservation_handle",
+          "type": "char*",
+          "resolved_type": "char*",
+          "direction": "out",
+          "json_type": "string"
+        },
+        {
+          "name": "reservation_len",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer"
+        },
+        {
+          "name": "out_hold_token",
+          "type": "char*",
+          "resolved_type": "char*",
+          "direction": "out",
+          "json_type": "string"
+        },
+        {
+          "name": "hold_len",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer"
+        }
+      ]
+    }
+  ]
+}

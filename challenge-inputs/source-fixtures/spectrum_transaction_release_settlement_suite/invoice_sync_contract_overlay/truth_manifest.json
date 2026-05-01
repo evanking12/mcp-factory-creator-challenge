@@ -1,0 +1,44 @@
+{
+  "dll_name": "spectrum_invoice_sync.dll",
+  "fixture_id": "spectrum_invoice_sync_contract_overlay",
+  "functions": [
+    {
+      "name": "SP_StageReleaseInvoice",
+      "benchmark_role": "medium02_first_attestation_consumer",
+      "expected_outcome_class": "verified_success",
+      "required_preconditions": [
+        "SP_EmitReleaseAttestation"
+      ],
+      "functional_precondition_example": "SP_EmitReleaseAttestation({'preview_ticket':'sp-preview-ORD-001-64-gate','fee_quote_id':'sp-fee-ORD-001-64-quote','out_attestation_packet':'sp-att-ORD-001-64-gate-packet','packet_len':64,'out_attestation_nonce':2809135127,'out_attestation_epoch':20260408}) -> out_attestation_packet='sp-att-ORD-001-64-gate-packet'",
+      "canonical_args": {
+        "attestation_packet": "sp-att-ORD-001-64-gate-packet"
+      },
+      "calling_convention": "cdecl",
+      "return_type": "int",
+      "signature": "int __cdecl SP_StageReleaseInvoice(const char* attestation_packet, char* out_invoice_stage_id, DWORD out_len)",
+      "parameters": [
+        {
+          "name": "attestation_packet",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "out_invoice_stage_id",
+          "type": "char*",
+          "resolved_type": "char*",
+          "direction": "out",
+          "json_type": "string"
+        },
+        {
+          "name": "out_len",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer"
+        }
+      ]
+    }
+  ]
+}

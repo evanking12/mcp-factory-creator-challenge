@@ -1,0 +1,51 @@
+{
+  "run_id": "hard03",
+  "claim_ceiling": "active Hard03 blocker signal, not public replay",
+  "artifact_mode": "sanitized_derived_sidecars_only",
+  "stage_artifacts": [
+    {
+      "stage": "S02-S05 / reservation_stage analyze",
+      "name": "Frontier signal boundary",
+      "purpose": "Represent a known hard-family frontier without pretending it is a sanitized public replay run.",
+      "consumes": [
+        {
+          "stage": "S02-S05 / reservation_stage analyze",
+          "role": "consumes",
+          "name": "hard-family signal map",
+          "kind": "canonical truth doc",
+          "status": "warn",
+          "availability": "sanitized_reference",
+          "value_source": "derived_summary",
+          "proof_meaning": "Names the current hard-family pressure and blocker routing without publishing raw sessions.",
+          "path": "docs/architecture/testing_strategy/HARD-FAMILY-FAILURE-SIGNAL-MAP.md"
+        }
+      ],
+      "emits": [
+        {
+          "stage": "S02-S05 / reservation_stage analyze",
+          "role": "emits",
+          "name": "Hard03 frontier status",
+          "kind": "derived status card",
+          "status": "warn",
+          "availability": "included",
+          "value_source": "derived_summary",
+          "proof_meaning": "reservation_stage analyze API read timeout before runtime entry; bounded reopen gate after route-event-queue repair",
+          "link": "data/runs/hard03/run-trace.json"
+        }
+      ],
+      "proves": [
+        {
+          "stage": "S02-S05 / reservation_stage analyze",
+          "role": "proves",
+          "name": "claim ceiling",
+          "kind": "frontier boundary",
+          "status": "warn",
+          "availability": "included",
+          "value_source": "derived_summary",
+          "proof_meaning": "active Hard03 blocker signal, not public replay",
+          "link": "data/runs/hard03/stage-artifacts.json"
+        }
+      ]
+    }
+  ]
+}

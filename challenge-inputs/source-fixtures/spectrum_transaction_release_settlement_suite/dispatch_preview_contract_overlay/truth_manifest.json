@@ -1,0 +1,55 @@
+{
+  "dll_name": "spectrum_dispatch_preview.dll",
+  "fixture_id": "spectrum_dispatch_preview_contract_overlay",
+  "functions": [
+    {
+      "name": "SP_PrepareReleasePreview",
+      "benchmark_role": "medium01_first_direct_consumer",
+      "expected_outcome_class": "verified_success",
+      "required_preconditions": [
+        "SP_OpenOperatorSession",
+        "SP_IssueReleaseHold"
+      ],
+      "functional_precondition_example": "SP_IssueReleaseHold({'operator_token':'sp-operator-ORD-001-session','order_id':'ORD-001','amount_cents':100,'out_reservation_handle':'sp-resv-ORD-001-64','reservation_len':256,'out_hold_token':'sp-hold-ORD-001-64','hold_len':256}) -> out_reservation_handle='sp-resv-ORD-001-64'",
+      "canonical_args": {
+        "reservation_handle": "sp-resv-ORD-001-64",
+        "operator_token": "sp-operator-ORD-001-session",
+        "out_preview_ticket": "",
+        "out_len": 256
+      },
+      "calling_convention": "cdecl",
+      "return_type": "int",
+      "signature": "int __cdecl SP_PrepareReleasePreview(const char* reservation_handle, const char* operator_token, char* out_preview_ticket, DWORD out_len)",
+      "parameters": [
+        {
+          "name": "reservation_handle",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "operator_token",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "out_preview_ticket",
+          "type": "char*",
+          "resolved_type": "char*",
+          "direction": "out",
+          "json_type": "string"
+        },
+        {
+          "name": "out_len",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer"
+        }
+      ]
+    }
+  ]
+}

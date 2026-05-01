@@ -1,0 +1,229 @@
+{
+  "trace_id": "eb548c9be977344a5d16a510e6b50fdf",
+  "metrics": [
+    {
+      "name": "first_failed_boundary",
+      "value": "S02-S05 / reservation_stage analyze",
+      "unit": "stage",
+      "status": "warn",
+      "why": "Prevents downstream missing artifacts from being mistaken for the root cause.",
+      "labels": {
+        "trace_id": "eb548c9be977344a5d16a510e6b50fdf",
+        "span_id": "9a87bfcde351e362",
+        "run_id": "hard03",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "hard03",
+        "target_name": "frontier",
+        "stage": "S02-S05 / reservation_stage analyze",
+        "claim_ceiling": "active Hard03 blocker signal, not public replay"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "root_blocker",
+      "value": "reservation_stage analyze API read timeout before runtime entry; bounded reopen gate after route-event-queue repair",
+      "unit": "signal",
+      "status": "warn",
+      "why": "Names the owning layer for the next bounded fix.",
+      "labels": {
+        "trace_id": "eb548c9be977344a5d16a510e6b50fdf",
+        "span_id": "9a87bfcde351e362",
+        "run_id": "hard03",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "hard03",
+        "target_name": "frontier",
+        "stage": "S02-S05 / reservation_stage analyze",
+        "claim_ceiling": "active Hard03 blocker signal, not public replay"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "candidate_comparability_state",
+      "value": "not_public_replay_comparable",
+      "unit": "state",
+      "status": "warn",
+      "why": "Distinguishes diagnostic output from evidence that can support comparison.",
+      "labels": {
+        "trace_id": "eb548c9be977344a5d16a510e6b50fdf",
+        "span_id": "9a87bfcde351e362",
+        "run_id": "hard03",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "hard03",
+        "target_name": "frontier",
+        "stage": "S02-S05 / reservation_stage analyze",
+        "claim_ceiling": "active Hard03 blocker signal, not public replay"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "safe_to_compare",
+      "value": false,
+      "unit": "bool",
+      "status": "warn",
+      "why": "Protects against false benchmark or regression claims.",
+      "labels": {
+        "trace_id": "eb548c9be977344a5d16a510e6b50fdf",
+        "span_id": "9a87bfcde351e362",
+        "run_id": "hard03",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "hard03",
+        "target_name": "frontier",
+        "stage": "S02-S05 / reservation_stage analyze",
+        "claim_ceiling": "active Hard03 blocker signal, not public replay"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "next_action_confidence",
+      "value": "medium",
+      "unit": "confidence",
+      "status": "warn",
+      "why": "Tells the operator whether to fix, rerun, inspect, or stop.",
+      "labels": {
+        "trace_id": "eb548c9be977344a5d16a510e6b50fdf",
+        "span_id": "9a87bfcde351e362",
+        "run_id": "hard03",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "hard03",
+        "target_name": "frontier",
+        "stage": "S02-S05 / reservation_stage analyze",
+        "claim_ceiling": "active Hard03 blocker signal, not public replay"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "mcp_factory.run.status_staleness",
+      "value": "unavailable",
+      "unit": "n/a",
+      "status": "unavailable",
+      "why": "Tells an operator whether a run is alive, stale, or misleading.",
+      "labels": {
+        "trace_id": "eb548c9be977344a5d16a510e6b50fdf",
+        "span_id": "9a87bfcde351e362",
+        "run_id": "hard03",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "hard03",
+        "target_name": "frontier",
+        "stage": "S02-S05 / reservation_stage analyze",
+        "claim_ceiling": "active Hard03 blocker signal, not public replay"
+      },
+      "value_source": "unavailable",
+      "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+    },
+    {
+      "name": "mcp_factory.pipeline.stage_span.duration",
+      "value": "unavailable",
+      "unit": "n/a",
+      "status": "unavailable",
+      "why": "Shows where time is spent so expensive reruns are not used blindly.",
+      "labels": {
+        "trace_id": "eb548c9be977344a5d16a510e6b50fdf",
+        "span_id": "9a87bfcde351e362",
+        "run_id": "hard03",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "hard03",
+        "target_name": "frontier",
+        "stage": "S02-S05 / reservation_stage analyze",
+        "claim_ceiling": "active Hard03 blocker signal, not public replay"
+      },
+      "value_source": "unavailable",
+      "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+    },
+    {
+      "name": "mcp_factory.runtime.discovery_child_wait.duration",
+      "value": "unavailable",
+      "unit": "n/a",
+      "status": "unavailable",
+      "why": "Separates analyzer child wait from bridge wait, prelaunch, and closeout.",
+      "labels": {
+        "trace_id": "eb548c9be977344a5d16a510e6b50fdf",
+        "span_id": "9a87bfcde351e362",
+        "run_id": "hard03",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "hard03",
+        "target_name": "frontier",
+        "stage": "S02-S05 / reservation_stage analyze",
+        "claim_ceiling": "active Hard03 blocker signal, not public replay"
+      },
+      "value_source": "unavailable",
+      "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+    },
+    {
+      "name": "mcp_factory.runtime.subprocess_interrupts.total",
+      "value": "unavailable",
+      "unit": "n/a",
+      "status": "unavailable",
+      "why": "Shows whether failures are clustering in runtime or lane infrastructure instead of product behavior.",
+      "labels": {
+        "trace_id": "eb548c9be977344a5d16a510e6b50fdf",
+        "span_id": "9a87bfcde351e362",
+        "run_id": "hard03",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "hard03",
+        "target_name": "frontier",
+        "stage": "S02-S05 / reservation_stage analyze",
+        "claim_ceiling": "active Hard03 blocker signal, not public replay"
+      },
+      "value_source": "unavailable",
+      "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+    },
+    {
+      "name": "mcp_factory.artifacts.required_emission_lag.duration",
+      "value": "unavailable",
+      "unit": "n/a",
+      "status": "unavailable",
+      "why": "Separates a completed stage from evidence that is actually readable.",
+      "labels": {
+        "trace_id": "eb548c9be977344a5d16a510e6b50fdf",
+        "span_id": "9a87bfcde351e362",
+        "run_id": "hard03",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "hard03",
+        "target_name": "frontier",
+        "stage": "S02-S05 / reservation_stage analyze",
+        "claim_ceiling": "active Hard03 blocker signal, not public replay"
+      },
+      "value_source": "unavailable",
+      "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+    },
+    {
+      "name": "mcp_factory.pipeline.checkpoint.save.duration",
+      "value": "unavailable",
+      "unit": "n/a",
+      "status": "unavailable",
+      "why": "Shows whether checkpoint persistence is cheap enough for fast iteration.",
+      "labels": {
+        "trace_id": "eb548c9be977344a5d16a510e6b50fdf",
+        "span_id": "9a87bfcde351e362",
+        "run_id": "hard03",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "hard03",
+        "target_name": "frontier",
+        "stage": "S02-S05 / reservation_stage analyze",
+        "claim_ceiling": "active Hard03 blocker signal, not public replay"
+      },
+      "value_source": "unavailable",
+      "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+    },
+    {
+      "name": "mcp_factory.pipeline.checkpoint.resume_seeded_findings",
+      "value": "unavailable",
+      "unit": "n/a",
+      "status": "unavailable",
+      "why": "Shows how much downstream work checkpoint resume avoided.",
+      "labels": {
+        "trace_id": "eb548c9be977344a5d16a510e6b50fdf",
+        "span_id": "9a87bfcde351e362",
+        "run_id": "hard03",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "hard03",
+        "target_name": "frontier",
+        "stage": "S02-S05 / reservation_stage analyze",
+        "claim_ceiling": "active Hard03 blocker signal, not public replay"
+      },
+      "value_source": "unavailable",
+      "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+    }
+  ],
+  "claim_ceiling": "telemetry-shaped metrics are planned diagnostic expansion only"
+}

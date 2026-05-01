@@ -1,0 +1,404 @@
+{
+  "fixture_id": "contoso_cs_interwoven",
+  "dll_name": "contoso_cs_interwoven.dll",
+  "depends_on": [
+    "contoso_cs.dll"
+  ],
+  "taxonomy_order": [
+    "verified_success",
+    "functional_precondition_unmet",
+    "inferred_success",
+    "failure",
+    "unknown"
+  ],
+  "sentinel_codes": {
+    "0": "CI_OK",
+    "-1001": "CI_ERR_BASE_NOT_LOADED",
+    "-1002": "CI_ERR_RESOLVE_FAILED",
+    "-1003": "CI_ERR_BADPARAM",
+    "-1004": "CI_ERR_PRECONDITION",
+    "-1005": "CI_ERR_CUSTOMER_MISMATCH",
+    "-1": "CS_ERR_NOTFOUND (from contoso_cs.dll)",
+    "-2": "CS_ERR_BADPARAM (from contoso_cs.dll)",
+    "-4": "CS_ERR_LOCKED (from contoso_cs.dll)",
+    "-5": "CS_ERR_INSUFFICENT (from contoso_cs.dll)"
+  },
+  "canonical_flow": [
+    {
+      "step": 1,
+      "function": "CI_Initialize",
+      "args": {},
+      "expected_outcome": "verified_success"
+    },
+    {
+      "step": 2,
+      "function": "CI_BindCustomer",
+      "args": {
+        "lpszCustId": "CUST-001"
+      },
+      "expected_outcome": "verified_success"
+    },
+    {
+      "step": 3,
+      "function": "CI_GetExpectedNonce",
+      "args": {},
+      "expected_outcome": "verified_success"
+    },
+    {
+      "step": 4,
+      "function": "CI_PrimeSession",
+      "args": {
+        "dwNonce": 2826700715
+      },
+      "expected_outcome": "verified_success"
+    },
+    {
+      "step": 5,
+      "function": "CI_GetUnlockTokenHex",
+      "args": {},
+      "expected_outcome": "verified_success",
+      "expected_value": "E5414243"
+    },
+    {
+      "step": 6,
+      "function": "CI_EarnThenRedeem",
+      "args": {
+        "lpszCustId": "CUST-001",
+        "dwPayCents": 1000,
+        "dwRedeemPoints": 10
+      },
+      "expected_outcome": "verified_success"
+    }
+  ],
+  "interwoven_patterns": [
+    {
+      "pattern_id": "prime_session_fanout",
+      "pattern_kind": "producer_to_several_consumers",
+      "producer_function": "CI_PrimeSession",
+      "shared_state_tokens": [
+        "bound_customer",
+        "expected_nonce",
+        "primed_session"
+      ],
+      "consumers": [
+        "CI_EarnThenRedeem",
+        "CI_UnlockAndDebit"
+      ],
+      "why_synthetic_insufficient": "Synthetic ambiguity can model competing producers, but it does not prove a real same-fixture fanout where one primed session gates several consumers with distinct downstream argument shapes.",
+      "decision_safe_effect": "Runtime planning can keep one producer feeding several real consumers explicit instead of flattening the consumers into unrelated local calls."
+    }
+  ],
+  "functions": [
+    {
+      "name": "CI_Initialize",
+      "required_preconditions": [],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {},
+      "parameters": []
+    },
+    {
+      "name": "CI_BindCustomer",
+      "required_preconditions": [
+        "CI_Initialize"
+      ],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {
+        "lpszCustId": "CUST-001"
+      },
+      "parameters": [
+        {
+          "name": "lpszCustId",
+          "type": "const char*",
+          "resolved_type": "LPCSTR",
+          "direction": "in",
+          "json_type": "string",
+          "description": "Customer identifier such as CUST-001"
+        }
+      ]
+    },
+    {
+      "name": "CI_GetExpectedNonce",
+      "required_preconditions": [
+        "CI_BindCustomer"
+      ],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {},
+      "parameters": [
+        {
+          "name": "pdwNonceOut",
+          "type": "DWORD*",
+          "resolved_type": "DWORD*",
+          "direction": "out",
+          "json_type": "integer",
+          "description": "Output nonce value for the currently bound customer"
+        }
+      ]
+    },
+    {
+      "name": "CI_PrimeSession",
+      "required_preconditions": [
+        "CI_BindCustomer",
+        "CI_GetExpectedNonce"
+      ],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {
+        "dwNonce": 2826700715
+      },
+      "parameters": [
+        {
+          "name": "dwNonce",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer",
+          "description": "Nonce returned by CI_GetExpectedNonce"
+        }
+      ]
+    },
+    {
+      "name": "CI_GetUnlockTokenHex",
+      "required_preconditions": [
+        "CI_Initialize"
+      ],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {},
+      "parameters": [
+        {
+          "name": "pOutBuf",
+          "type": "char*",
+          "resolved_type": "LPSTR",
+          "direction": "out",
+          "json_type": "string",
+          "description": "Output buffer receiving the unlock token hex"
+        },
+        {
+          "name": "dwBufLen",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer",
+          "description": "Size of the output buffer"
+        }
+      ]
+    },
+    {
+      "name": "CI_GetCompositeState",
+      "required_preconditions": [
+        "CI_Initialize"
+      ],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {
+        "lpszCustId": "CUST-001"
+      },
+      "parameters": [
+        {
+          "name": "lpszCustId",
+          "type": "const char*",
+          "resolved_type": "LPCSTR",
+          "direction": "in",
+          "json_type": "string",
+          "description": "Customer identifier such as CUST-001"
+        },
+        {
+          "name": "pdwBalanceOut",
+          "type": "DWORD*",
+          "resolved_type": "DWORD*",
+          "direction": "out",
+          "json_type": "integer",
+          "description": "Output account balance"
+        },
+        {
+          "name": "pdwPointsOut",
+          "type": "DWORD*",
+          "resolved_type": "DWORD*",
+          "direction": "out",
+          "json_type": "integer",
+          "description": "Output loyalty points"
+        },
+        {
+          "name": "pDiagOut",
+          "type": "char*",
+          "resolved_type": "LPSTR",
+          "direction": "out",
+          "json_type": "string",
+          "description": "Output diagnostics buffer"
+        },
+        {
+          "name": "dwDiagLen",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer",
+          "description": "Diagnostics buffer size"
+        }
+      ]
+    },
+    {
+      "name": "CI_EarnThenRedeem",
+      "required_preconditions": [
+        "CI_BindCustomer",
+        "CI_PrimeSession"
+      ],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {
+        "lpszCustId": "CUST-001",
+        "dwPayCents": 1000,
+        "dwRedeemPoints": 10
+      },
+      "parameters": [
+        {
+          "name": "lpszCustId",
+          "type": "const char*",
+          "resolved_type": "LPCSTR",
+          "direction": "in",
+          "json_type": "string",
+          "description": "Customer identifier such as CUST-001"
+        },
+        {
+          "name": "dwPayCents",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer",
+          "description": "Payment amount in cents"
+        },
+        {
+          "name": "dwRedeemPoints",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer",
+          "description": "Points to redeem"
+        },
+        {
+          "name": "pdwCentsAddedOut",
+          "type": "DWORD*",
+          "resolved_type": "DWORD*",
+          "direction": "out",
+          "json_type": "integer",
+          "description": "Output cents credited by the redeem step"
+        }
+      ],
+      "functional_precondition_example": {
+        "args": {
+          "lpszCustId": "CUST-001",
+          "dwPayCents": 100,
+          "dwRedeemPoints": 100000
+        },
+        "expected_code": -5,
+        "expected_outcome_class": "functional_precondition_unmet"
+      }
+    },
+    {
+      "name": "CI_UnlockAndDebit",
+      "required_preconditions": [
+        "CI_PrimeSession"
+      ],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {
+        "lpszCustId": "CUST-003",
+        "lpszTokenHex": "E5414243",
+        "dwDebitCents": 1
+      },
+      "parameters": [
+        {
+          "name": "lpszCustId",
+          "type": "const char*",
+          "resolved_type": "LPCSTR",
+          "direction": "in",
+          "json_type": "string",
+          "description": "Customer identifier such as CUST-003"
+        },
+        {
+          "name": "lpszTokenHex",
+          "type": "const char*",
+          "resolved_type": "LPCSTR",
+          "direction": "in",
+          "json_type": "string",
+          "description": "Unlock token hex returned by CI_GetUnlockTokenHex"
+        },
+        {
+          "name": "dwDebitCents",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer",
+          "description": "Debit amount in cents"
+        }
+      ]
+    },
+    {
+      "name": "CI_GetVersionBridge",
+      "required_preconditions": [
+        "CI_Initialize"
+      ],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {},
+      "parameters": [
+        {
+          "name": "pdwOut",
+          "type": "DWORD*",
+          "resolved_type": "DWORD*",
+          "direction": "out",
+          "json_type": "integer",
+          "description": "Packed version output"
+        }
+      ]
+    },
+    {
+      "name": "CI_ResetSession",
+      "required_preconditions": [],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {},
+      "parameters": []
+    },
+    {
+      "name": "CI_GetLastErrorText",
+      "required_preconditions": [],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {},
+      "parameters": [
+        {
+          "name": "pOutBuf",
+          "type": "char*",
+          "resolved_type": "LPSTR",
+          "direction": "out",
+          "json_type": "string",
+          "description": "Output buffer receiving the last error text"
+        },
+        {
+          "name": "dwBufLen",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer",
+          "description": "Size of the output buffer"
+        }
+      ]
+    },
+    {
+      "name": "CI_GetFixtureDiagnostics",
+      "required_preconditions": [],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {},
+      "parameters": [
+        {
+          "name": "pOutBuf",
+          "type": "char*",
+          "resolved_type": "LPSTR",
+          "direction": "out",
+          "json_type": "string",
+          "description": "Output buffer receiving the fixture diagnostics string"
+        },
+        {
+          "name": "dwBufLen",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer",
+          "description": "Size of the output buffer"
+        }
+      ]
+    }
+  ]
+}

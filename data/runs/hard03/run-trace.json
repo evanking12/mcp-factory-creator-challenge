@@ -1,0 +1,22 @@
+{
+  "trace_id": "eb548c9be977344a5d16a510e6b50fdf",
+  "spans": [
+    {
+      "span_id": "9a87bfcde351e362",
+      "name": "Frontier pressure signal",
+      "stage": "S02-S05 / reservation_stage analyze",
+      "status": "blocked",
+      "duration_sec": 0,
+      "message": "reservation_stage analyze API read timeout before runtime entry; bounded reopen gate after route-event-queue repair",
+      "trace_id": "eb548c9be977344a5d16a510e6b50fdf",
+      "span_key": "frontier_signal",
+      "claim_ceiling": "active Hard03 blocker signal, not public replay",
+      "value_source": "derived_summary",
+      "run_id": "hard03",
+      "suite_id": "spectrum_transaction_release_settlement_suite",
+      "case_id": "hard03",
+      "target_name": "frontier"
+    }
+  ],
+  "claim_ceiling": "telemetry-shaped metrics are planned diagnostic expansion only"
+}

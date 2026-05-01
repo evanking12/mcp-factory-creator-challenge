@@ -1,0 +1,256 @@
+{
+  "dll_name": "spectrum_settlement_reconcile.dll",
+  "fixture_id": "spectrum_settlement_validator_contract_overlay",
+  "functions": [
+    {
+      "name": "SP_VerifyReservedRelease",
+      "benchmark_role": "medium01_final_validator",
+      "expected_outcome_class": "verified_success",
+      "required_preconditions": [
+        "SP_OpenOperatorSession",
+        "SP_IssueReleaseHold",
+        "SP_PrepareReleasePreview",
+        "SP_StageReleaseFeeQuote"
+      ],
+      "functional_precondition_example": "Derived trusted predecessors provide reservation_handle='sp-resv-ORD-001-64', preview_ticket='sp-preview-ORD-001-64-gate', fee_quote_id='sp-fee-ORD-001-64-quote'",
+      "canonical_args": {
+        "reservation_handle": "sp-resv-ORD-001-64",
+        "preview_ticket": "sp-preview-ORD-001-64-gate",
+        "fee_quote_id": "sp-fee-ORD-001-64-quote",
+        "out_verification_ticket": "",
+        "out_len": 256
+      },
+      "calling_convention": "cdecl",
+      "return_type": "int",
+      "signature": "int __cdecl SP_VerifyReservedRelease(const char* reservation_handle, const char* preview_ticket, const char* fee_quote_id, char* out_verification_ticket, DWORD out_len)",
+      "parameters": [
+        {
+          "name": "reservation_handle",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "preview_ticket",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "fee_quote_id",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "out_verification_ticket",
+          "type": "char*",
+          "resolved_type": "char*",
+          "direction": "out",
+          "json_type": "string"
+        },
+        {
+          "name": "out_len",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer"
+        }
+      ]
+    },
+    {
+      "name": "SP_ConfirmAttestedRelease",
+      "benchmark_role": "medium02_final_confirmation",
+      "expected_outcome_class": "verified_success",
+      "required_preconditions": [
+        "SP_EmitReleaseAttestation",
+        "SP_StageReleaseInvoice",
+        "SP_StageCustomerEntitlementUpdate"
+      ],
+      "functional_precondition_example": "SP_StageReleaseInvoice({'attestation_packet':'sp-att-ORD-001-64-gate-packet','out_invoice_stage_id':'sp-invoice-stage-ORD-001-64-gate-packet-bill','out_len':256}) -> out_invoice_stage_id='sp-invoice-stage-ORD-001-64-gate-packet-bill'",
+      "canonical_args": {
+        "attestation_packet": "sp-att-ORD-001-64-gate-packet",
+        "invoice_stage_id": "sp-invoice-stage-ORD-001-64-gate-packet-bill",
+        "entitlement_stage_id": "sp-entitlement-stage-ORD-001-64-gate-packet-grant"
+      },
+      "calling_convention": "cdecl",
+      "return_type": "int",
+      "signature": "int __cdecl SP_ConfirmAttestedRelease(const char* attestation_packet, const char* invoice_stage_id, const char* entitlement_stage_id, char* out_confirmation_id, DWORD out_len)",
+      "parameters": [
+        {
+          "name": "attestation_packet",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "invoice_stage_id",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "entitlement_stage_id",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "out_confirmation_id",
+          "type": "char*",
+          "resolved_type": "char*",
+          "direction": "out",
+          "json_type": "string"
+        },
+        {
+          "name": "out_len",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer"
+        }
+      ]
+    },
+    {
+      "name": "SP_SelectTrustedBranch",
+      "benchmark_role": "hard01_late_branch_selection",
+      "expected_outcome_class": "verified_success",
+      "required_preconditions": [
+        "SP_CommitRelease",
+        "SP_ReplayReleaseBranch"
+      ],
+      "functional_precondition_example": "SP_CommitRelease(...) -> out_commit_receipt='sp-commit-ORD-001-4200-receipt'; SP_ReplayReleaseBranch(...) -> out_replay_receipt='sp-branch-replay-ORD-001-64-receipt'",
+      "canonical_args": {
+        "primary_commit_receipt": "sp-commit-ORD-001-4200-receipt",
+        "replay_commit_receipt": "sp-branch-replay-ORD-001-64-receipt"
+      },
+      "calling_convention": "cdecl",
+      "return_type": "int",
+      "signature": "int __cdecl SP_SelectTrustedBranch(const char* primary_commit_receipt, const char* replay_commit_receipt, char* out_trusted_branch_id, DWORD trusted_len, char* out_rejected_branch_id, DWORD rejected_len)",
+      "parameters": [
+        {
+          "name": "primary_commit_receipt",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "replay_commit_receipt",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "out_trusted_branch_id",
+          "type": "char*",
+          "resolved_type": "char*",
+          "direction": "out",
+          "json_type": "string"
+        },
+        {
+          "name": "trusted_len",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer"
+        },
+        {
+          "name": "out_rejected_branch_id",
+          "type": "char*",
+          "resolved_type": "char*",
+          "direction": "out",
+          "json_type": "string"
+        },
+        {
+          "name": "rejected_len",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer"
+        }
+      ]
+    },
+    {
+      "name": "SP_InvalidateStaleAttestedRelease",
+      "benchmark_role": "hard02_stale_attestation_reconciliation",
+      "expected_outcome_class": "verified_success",
+      "required_preconditions": [
+        "SP_EmitReleaseAttestation",
+        "SP_StageReleaseInvoice",
+        "SP_StageCustomerEntitlementUpdate"
+      ],
+      "functional_precondition_example": "SP_EmitReleaseAttestation(...) -> out_attestation_packet='sp-att-ORD-001-64-gate-packet', out_attestation_nonce=2809135127, out_attestation_epoch=20260408; downstream consumers accept that packet before late freshness invalidation runs",
+      "canonical_args": {
+        "attestation_packet": "sp-att-ORD-001-64-gate-packet",
+        "attestation_nonce": 2809135127,
+        "attestation_epoch": 20260408,
+        "out_stale_attestation_token": "",
+        "token_len": 256,
+        "out_stale_reason": "",
+        "reason_len": 256
+      },
+      "calling_convention": "cdecl",
+      "return_type": "int",
+      "signature": "int __cdecl SP_InvalidateStaleAttestedRelease(const char* attestation_packet, uint32_t attestation_nonce, uint32_t attestation_epoch, char* out_stale_attestation_token, DWORD token_len, char* out_stale_reason, DWORD reason_len)",
+      "parameters": [
+        {
+          "name": "attestation_packet",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "attestation_nonce",
+          "type": "uint32_t",
+          "resolved_type": "uint32_t",
+          "direction": "in",
+          "json_type": "integer"
+        },
+        {
+          "name": "attestation_epoch",
+          "type": "uint32_t",
+          "resolved_type": "uint32_t",
+          "direction": "in",
+          "json_type": "integer"
+        },
+        {
+          "name": "out_stale_attestation_token",
+          "type": "char*",
+          "resolved_type": "char*",
+          "direction": "out",
+          "json_type": "string"
+        },
+        {
+          "name": "token_len",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer"
+        },
+        {
+          "name": "out_stale_reason",
+          "type": "char*",
+          "resolved_type": "char*",
+          "direction": "out",
+          "json_type": "string"
+        },
+        {
+          "name": "reason_len",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer"
+        }
+      ]
+    }
+  ]
+}

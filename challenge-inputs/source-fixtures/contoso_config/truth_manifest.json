@@ -1,0 +1,84 @@
+{
+  "fixture_id": "contoso_config",
+  "dll_name": "contoso_config.dll",
+  "depends_on": [
+    "contoso_cs.dll"
+  ],
+  "benchmark_role": "environment_config",
+  "sentinel_codes": {
+    "0": "CFG_OK",
+    "-5001": "CFG_ERR_ENV_MISSING",
+    "-5002": "CFG_ERR_BADPARAM",
+    "-5003": "CFG_ERR_PRECONDITION",
+    "-5004": "CFG_ERR_BADTICKET",
+    "-5005": "CFG_ERR_BADNONCE",
+    "-5006": "CFG_ERR_NOTLICENSED"
+  },
+  "canonical_flow": [
+    {
+      "step": 1,
+      "function": "CFG_SetupEnvironment",
+      "args": {
+        "dwMode": 2
+      },
+      "expected_outcome": "verified_success"
+    },
+    {
+      "step": 2,
+      "function": "CFG_Initialize",
+      "expected_outcome": "verified_success"
+    },
+    {
+      "step": 3,
+      "function": "CFG_BindCustomer",
+      "args": {
+        "lpszCustId": "CUST-001"
+      },
+      "expected_outcome": "verified_success"
+    },
+    {
+      "step": 4,
+      "function": "CFG_OpenLicensedWindow",
+      "expected_outcome": "verified_success"
+    },
+    {
+      "step": 5,
+      "function": "CFG_GetLicenseNonce",
+      "args": {
+        "lpszTicket": "ticket-from-open"
+      },
+      "expected_outcome": "verified_success"
+    },
+    {
+      "step": 6,
+      "function": "CFG_ApproveLicensedCall",
+      "args": {
+        "lpszTicket": "ticket-from-open",
+        "dwNonce": "nonce-from-read"
+      },
+      "expected_outcome": "verified_success"
+    },
+    {
+      "step": 7,
+      "function": "CFG_RunCustomerSync",
+      "args": {
+        "lpszTicket": "ticket-from-open"
+      },
+      "expected_outcome": "verified_success"
+    }
+  ],
+  "functions": [
+    { "name": "CFG_SetupEnvironment", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": { "dwMode": 2 }, "parameters": [ { "name": "dwMode", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "1=trial, 2=licensed" } ] },
+    { "name": "CFG_Initialize", "required_preconditions": [ "CFG_SetupEnvironment" ], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [] },
+    { "name": "CFG_BindCustomer", "required_preconditions": [ "CFG_Initialize" ], "expected_outcome_class": "verified_success", "canonical_args": { "lpszCustId": "CUST-001" }, "parameters": [ { "name": "lpszCustId", "type": "const char*", "resolved_type": "LPCSTR", "direction": "in", "json_type": "string", "description": "Customer identifier" } ] },
+    { "name": "CFG_GetMode", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [ { "name": "pdwModeOut", "type": "DWORD*", "resolved_type": "DWORD*", "direction": "out", "json_type": "integer", "description": "Output mode code" } ] },
+    { "name": "CFG_OpenLicensedWindow", "required_preconditions": [ "CFG_BindCustomer" ], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [ { "name": "pOutTicket", "type": "char*", "resolved_type": "LPSTR", "direction": "out", "json_type": "string", "description": "Output license ticket" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Ticket buffer size" } ] },
+    { "name": "CFG_GetLicenseNonce", "required_preconditions": [ "CFG_OpenLicensedWindow" ], "expected_outcome_class": "verified_success", "canonical_args": { "lpszTicket": "ticket-from-open" }, "parameters": [ { "name": "lpszTicket", "type": "const char*", "resolved_type": "LPCSTR", "direction": "in", "json_type": "string", "description": "Ticket returned by CFG_OpenLicensedWindow" }, { "name": "pdwNonceOut", "type": "DWORD*", "resolved_type": "DWORD*", "direction": "out", "json_type": "integer", "description": "Output license nonce" } ] },
+    { "name": "CFG_ApproveLicensedCall", "required_preconditions": [ "CFG_GetLicenseNonce" ], "expected_outcome_class": "verified_success", "canonical_args": { "lpszTicket": "ticket-from-open", "dwNonce": "nonce-from-read" }, "parameters": [ { "name": "lpszTicket", "type": "const char*", "resolved_type": "LPCSTR", "direction": "in", "json_type": "string", "description": "Ticket returned by CFG_OpenLicensedWindow" }, { "name": "dwNonce", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Nonce returned by CFG_GetLicenseNonce" } ] },
+    { "name": "CFG_RunCustomerSync", "required_preconditions": [ "CFG_ApproveLicensedCall" ], "expected_outcome_class": "verified_success", "canonical_args": { "lpszTicket": "ticket-from-open" }, "parameters": [ { "name": "lpszTicket", "type": "const char*", "resolved_type": "LPCSTR", "direction": "in", "json_type": "string", "description": "Ticket returned by CFG_OpenLicensedWindow" } ] },
+    { "name": "CFG_GetConfigState", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [ { "name": "pOutBuf", "type": "char*", "resolved_type": "LPSTR", "direction": "out", "json_type": "string", "description": "Output state buffer" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "State buffer size" } ] },
+    { "name": "CFG_ResetEnvironment", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [] },
+    { "name": "CFG_GetLastErrorText", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [ { "name": "pOutBuf", "type": "char*", "resolved_type": "LPSTR", "direction": "out", "json_type": "string", "description": "Output last-error buffer" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Error buffer size" } ] },
+    { "name": "CFG_GetDiagnostics", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [ { "name": "pOutBuf", "type": "char*", "resolved_type": "LPSTR", "direction": "out", "json_type": "string", "description": "Output diagnostics buffer" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Diagnostics buffer size" } ] }
+  ]
+}

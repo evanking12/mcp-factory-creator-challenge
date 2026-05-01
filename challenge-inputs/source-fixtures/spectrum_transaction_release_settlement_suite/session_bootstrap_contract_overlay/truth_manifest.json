@@ -1,0 +1,40 @@
+{
+  "dll_name": "spectrum_session_bootstrap.dll",
+  "fixture_id": "spectrum_session_bootstrap_contract_overlay",
+  "functions": [
+    {
+      "name": "SP_OpenOperatorSession",
+      "benchmark_role": "easy01_root_session_bootstrap",
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {
+        "operator_id": "easy01-operator"
+      },
+      "calling_convention": "cdecl",
+      "return_type": "int",
+      "signature": "int __cdecl SP_OpenOperatorSession(const char* operator_id, char* out_operator_token, DWORD out_len)",
+      "parameters": [
+        {
+          "name": "operator_id",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "out_operator_token",
+          "type": "char*",
+          "resolved_type": "char*",
+          "direction": "out",
+          "json_type": "string"
+        },
+        {
+          "name": "out_len",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer"
+        }
+      ]
+    }
+  ]
+}

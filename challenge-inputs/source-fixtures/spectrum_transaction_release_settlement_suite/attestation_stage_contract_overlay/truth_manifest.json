@@ -1,0 +1,67 @@
+{
+  "dll_name": "spectrum_attestation_stage.dll",
+  "fixture_id": "spectrum_attestation_stage_contract_overlay",
+  "functions": [
+    {
+      "name": "SP_EmitReleaseAttestation",
+      "benchmark_role": "medium02_delayed_attestation_materializer",
+      "expected_outcome_class": "verified_success",
+      "required_preconditions": [
+        "SP_PrepareReleasePreview",
+        "SP_StageReleaseFeeQuote"
+      ],
+      "functional_precondition_example": "SP_PrepareReleasePreview({'reservation_handle':'sp-resv-ORD-001-64','operator_token':'sp-operator-ORD-001-session','out_preview_ticket':'sp-preview-ORD-001-64-gate','out_len':256}) -> out_preview_ticket='sp-preview-ORD-001-64-gate'",
+      "canonical_args": {
+        "preview_ticket": "sp-preview-ORD-001-64-gate",
+        "fee_quote_id": "sp-fee-ORD-001-64-quote"
+      },
+      "calling_convention": "cdecl",
+      "return_type": "int",
+      "signature": "int __cdecl SP_EmitReleaseAttestation(const char* preview_ticket, const char* fee_quote_id, char* out_attestation_packet, DWORD packet_len, uint32_t* out_attestation_nonce, uint32_t* out_attestation_epoch)",
+      "parameters": [
+        {
+          "name": "preview_ticket",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "fee_quote_id",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "out_attestation_packet",
+          "type": "char*",
+          "resolved_type": "char*",
+          "direction": "out",
+          "json_type": "string"
+        },
+        {
+          "name": "packet_len",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer"
+        },
+        {
+          "name": "out_attestation_nonce",
+          "type": "uint32_t*",
+          "resolved_type": "uint32_t*",
+          "direction": "out",
+          "json_type": "integer"
+        },
+        {
+          "name": "out_attestation_epoch",
+          "type": "uint32_t*",
+          "resolved_type": "uint32_t*",
+          "direction": "out",
+          "json_type": "integer"
+        }
+      ]
+    }
+  ]
+}

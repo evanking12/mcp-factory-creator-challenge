@@ -1,0 +1,377 @@
+{
+  "fixture_id": "contoso_workflow",
+  "dll_name": "contoso_workflow.dll",
+  "depends_on": [
+    "contoso_cs.dll",
+    "contoso_payments.dll"
+  ],
+  "benchmark_role": "workflow_fulfillment",
+  "sentinel_codes": {
+    "0": "WF_OK",
+    "-2001": "WF_ERR_BASE_NOT_LOADED",
+    "-2002": "WF_ERR_RESOLVE_FAILED",
+    "-2003": "WF_ERR_BADPARAM",
+    "-2004": "WF_ERR_PRECONDITION",
+    "-2005": "WF_ERR_BADHANDLE",
+    "-2006": "WF_ERR_BADNONCE",
+    "-2007": "WF_ERR_STATE"
+  },
+  "canonical_flow": [
+    {
+      "step": 1,
+      "function": "WF_Initialize",
+      "expected_outcome": "verified_success"
+    },
+    {
+      "step": 2,
+      "function": "WF_BindCustomer",
+      "args": {
+        "lpszCustId": "CUST-001"
+      },
+      "expected_outcome": "verified_success"
+    },
+    {
+      "step": 3,
+      "function": "WF_CreateReservation",
+      "args": {
+        "lpszSku": "ACC-USB-C",
+        "wQty": 2,
+        "dwHoldMinutes": 30
+      },
+      "expected_outcome": "verified_success"
+    },
+    {
+      "step": 4,
+      "function": "WF_OpenFulfillment",
+      "args": {
+        "lpszResvId": "reservation-from-create"
+      },
+      "expected_outcome": "verified_success"
+    },
+    {
+      "step": 5,
+      "function": "WF_GetWorkflowNonce",
+      "args": {
+        "lpszHandle": "handle-from-open"
+      },
+      "expected_outcome": "verified_success"
+    },
+    {
+      "step": 6,
+      "function": "WF_ConfirmWorkflow",
+      "args": {
+        "lpszHandle": "handle-from-open",
+        "dwNonce": "nonce-from-read"
+      },
+      "expected_outcome": "verified_success"
+    },
+    {
+      "step": 7,
+      "function": "WF_CommitShipment",
+      "args": {
+        "lpszHandle": "handle-from-open"
+      },
+      "expected_outcome": "verified_success"
+    }
+  ],
+  "functions": [
+    {
+      "name": "WF_Initialize",
+      "required_preconditions": [],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {},
+      "parameters": []
+    },
+    {
+      "name": "WF_BindCustomer",
+      "required_preconditions": [
+        "WF_Initialize"
+      ],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {
+        "lpszCustId": "CUST-001"
+      },
+      "parameters": [
+        {
+          "name": "lpszCustId",
+          "type": "const char*",
+          "resolved_type": "LPCSTR",
+          "direction": "in",
+          "json_type": "string",
+          "description": "Customer identifier such as CUST-001"
+        }
+      ]
+    },
+    {
+      "name": "WF_CreateReservation",
+      "required_preconditions": [
+        "WF_BindCustomer"
+      ],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {
+        "lpszSku": "ACC-USB-C",
+        "wQty": 2,
+        "dwHoldMinutes": 30
+      },
+      "parameters": [
+        {
+          "name": "lpszSku",
+          "type": "const char*",
+          "resolved_type": "LPCSTR",
+          "direction": "in",
+          "json_type": "string",
+          "description": "SKU such as ACC-USB-C"
+        },
+        {
+          "name": "wQty",
+          "type": "WORD",
+          "resolved_type": "WORD",
+          "direction": "in",
+          "json_type": "integer",
+          "description": "Item quantity"
+        },
+        {
+          "name": "dwHoldMinutes",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer",
+          "description": "Hold duration in minutes"
+        },
+        {
+          "name": "pOutResvId",
+          "type": "char*",
+          "resolved_type": "LPSTR",
+          "direction": "out",
+          "json_type": "string",
+          "description": "Output buffer receiving the reservation identifier"
+        },
+        {
+          "name": "dwBufLen",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer",
+          "description": "Reservation output buffer size"
+        }
+      ]
+    },
+    {
+      "name": "WF_OpenFulfillment",
+      "required_preconditions": [
+        "WF_CreateReservation"
+      ],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {
+        "lpszResvId": "reservation-from-create"
+      },
+      "parameters": [
+        {
+          "name": "lpszResvId",
+          "type": "const char*",
+          "resolved_type": "LPCSTR",
+          "direction": "in",
+          "json_type": "string",
+          "description": "Reservation identifier returned by WF_CreateReservation"
+        },
+        {
+          "name": "pOutHandle",
+          "type": "char*",
+          "resolved_type": "LPSTR",
+          "direction": "out",
+          "json_type": "string",
+          "description": "Output buffer receiving the workflow handle"
+        },
+        {
+          "name": "dwBufLen",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer",
+          "description": "Workflow handle output buffer size"
+        }
+      ]
+    },
+    {
+      "name": "WF_GetWorkflowNonce",
+      "required_preconditions": [
+        "WF_OpenFulfillment"
+      ],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {
+        "lpszHandle": "handle-from-open"
+      },
+      "parameters": [
+        {
+          "name": "lpszHandle",
+          "type": "const char*",
+          "resolved_type": "LPCSTR",
+          "direction": "in",
+          "json_type": "string",
+          "description": "Workflow handle returned by WF_OpenFulfillment"
+        },
+        {
+          "name": "pdwNonceOut",
+          "type": "DWORD*",
+          "resolved_type": "DWORD*",
+          "direction": "out",
+          "json_type": "integer",
+          "description": "Output workflow nonce"
+        }
+      ]
+    },
+    {
+      "name": "WF_ConfirmWorkflow",
+      "required_preconditions": [
+        "WF_GetWorkflowNonce"
+      ],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {
+        "lpszHandle": "handle-from-open",
+        "dwNonce": "nonce-from-read"
+      },
+      "parameters": [
+        {
+          "name": "lpszHandle",
+          "type": "const char*",
+          "resolved_type": "LPCSTR",
+          "direction": "in",
+          "json_type": "string",
+          "description": "Workflow handle returned by WF_OpenFulfillment"
+        },
+        {
+          "name": "dwNonce",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer",
+          "description": "Workflow nonce returned by WF_GetWorkflowNonce"
+        }
+      ]
+    },
+    {
+      "name": "WF_CommitShipment",
+      "required_preconditions": [
+        "WF_ConfirmWorkflow"
+      ],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {
+        "lpszHandle": "handle-from-open"
+      },
+      "parameters": [
+        {
+          "name": "lpszHandle",
+          "type": "const char*",
+          "resolved_type": "LPCSTR",
+          "direction": "in",
+          "json_type": "string",
+          "description": "Workflow handle returned by WF_OpenFulfillment"
+        },
+        {
+          "name": "pdwAuthCode",
+          "type": "DWORD*",
+          "resolved_type": "DWORD*",
+          "direction": "out",
+          "json_type": "integer",
+          "description": "Output authorization code from the shipment commit"
+        }
+      ]
+    },
+    {
+      "name": "WF_GetWorkflowState",
+      "required_preconditions": [
+        "WF_OpenFulfillment"
+      ],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {
+        "lpszHandle": "handle-from-open"
+      },
+      "parameters": [
+        {
+          "name": "lpszHandle",
+          "type": "const char*",
+          "resolved_type": "LPCSTR",
+          "direction": "in",
+          "json_type": "string",
+          "description": "Workflow handle returned by WF_OpenFulfillment"
+        },
+        {
+          "name": "pOutBuf",
+          "type": "char*",
+          "resolved_type": "LPSTR",
+          "direction": "out",
+          "json_type": "string",
+          "description": "Output buffer receiving the workflow state string"
+        },
+        {
+          "name": "dwBufLen",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer",
+          "description": "Workflow state output buffer size"
+        }
+      ]
+    },
+    {
+      "name": "WF_GetReservationEcho",
+      "required_preconditions": [
+        "WF_OpenFulfillment"
+      ],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {
+        "lpszHandle": "handle-from-open"
+      },
+      "parameters": [
+        {
+          "name": "lpszHandle",
+          "type": "const char*",
+          "resolved_type": "LPCSTR",
+          "direction": "in",
+          "json_type": "string",
+          "description": "Workflow handle returned by WF_OpenFulfillment"
+        },
+        {
+          "name": "pOutBuf",
+          "type": "char*",
+          "resolved_type": "LPSTR",
+          "direction": "out",
+          "json_type": "string",
+          "description": "Output buffer receiving reservation details"
+        },
+        {
+          "name": "dwBufLen",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer",
+          "description": "Reservation echo output buffer size"
+        }
+      ]
+    },
+    {
+      "name": "WF_CancelWorkflow",
+      "required_preconditions": [
+        "WF_OpenFulfillment"
+      ],
+      "expected_outcome_class": "verified_success",
+      "canonical_args": {
+        "lpszHandle": "handle-from-open"
+      },
+      "parameters": [
+        {
+          "name": "lpszHandle",
+          "type": "const char*",
+          "resolved_type": "LPCSTR",
+          "direction": "in",
+          "json_type": "string",
+          "description": "Workflow handle returned by WF_OpenFulfillment"
+        }
+      ],
+      "functional_precondition_example": {
+        "expected_code": -2007,
+        "expected_outcome_class": "functional_precondition_unmet"
+      }
+    }
+  ]
+}

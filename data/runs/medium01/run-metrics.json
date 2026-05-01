@@ -1,0 +1,235 @@
+{
+  "trace_id": "306fd4418abdd88a24b02817246da695",
+  "metrics": [
+    {
+      "name": "mcp_factory.pipeline.stage_span.duration",
+      "value": 472.52,
+      "unit": "sec",
+      "status": "pass",
+      "why": "Shows where time is spent so expensive reruns are not used blindly.",
+      "labels": {
+        "trace_id": "306fd4418abdd88a24b02817246da695",
+        "span_id": "5033ff172af39fd2",
+        "run_id": "medium01",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "medium-01-product-route",
+        "target_name": "run",
+        "stage": "replay",
+        "claim_ceiling": "product-green baseline replay",
+        "run": "medium01",
+        "span": "target_runs"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "mcp_factory.run.status_staleness",
+      "value": 0,
+      "unit": "sec",
+      "status": "pass",
+      "why": "Tells an operator whether a run is alive, stale, or misleading.",
+      "labels": {
+        "trace_id": "306fd4418abdd88a24b02817246da695",
+        "span_id": "5033ff172af39fd2",
+        "run_id": "medium01",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "medium-01-product-route",
+        "target_name": "run",
+        "stage": "replay",
+        "claim_ceiling": "product-green baseline replay",
+        "terminal": "true"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "mcp_factory.artifacts.required_emission_lag.duration",
+      "value": 0,
+      "unit": "sec",
+      "status": "pass",
+      "why": "Separates a completed stage from evidence that is actually readable.",
+      "labels": {
+        "trace_id": "306fd4418abdd88a24b02817246da695",
+        "span_id": "5033ff172af39fd2",
+        "run_id": "medium01",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "medium-01-product-route",
+        "target_name": "run",
+        "stage": "replay",
+        "claim_ceiling": "product-green baseline replay",
+        "source": "pinned_baseline_artifacts"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "first_failed_boundary",
+      "value": "none",
+      "unit": "boundary",
+      "status": "pass",
+      "why": "Prevents downstream missing artifacts from being mistaken for the root cause.",
+      "labels": {
+        "trace_id": "306fd4418abdd88a24b02817246da695",
+        "span_id": "5033ff172af39fd2",
+        "run_id": "medium01",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "medium-01-product-route",
+        "target_name": "run",
+        "stage": "replay",
+        "claim_ceiling": "product-green baseline replay",
+        "semantic_gap_count": "0",
+        "embodiment_gap_count": "0"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "root_blocker",
+      "value": "none",
+      "unit": "blocker",
+      "status": "pass",
+      "why": "Names the owning layer for the next bounded fix.",
+      "labels": {
+        "trace_id": "306fd4418abdd88a24b02817246da695",
+        "span_id": "5033ff172af39fd2",
+        "run_id": "medium01",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "medium-01-product-route",
+        "target_name": "run",
+        "stage": "replay",
+        "claim_ceiling": "product-green baseline replay"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "candidate_comparability_state",
+      "value": "comparable",
+      "unit": "state",
+      "status": "pass",
+      "why": "Distinguishes diagnostic output from evidence that can support comparison.",
+      "labels": {
+        "trace_id": "306fd4418abdd88a24b02817246da695",
+        "span_id": "5033ff172af39fd2",
+        "run_id": "medium01",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "medium-01-product-route",
+        "target_name": "run",
+        "stage": "replay",
+        "claim_ceiling": "product-green baseline replay",
+        "authoritative_proving": "true"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "safe_to_compare",
+      "value": true,
+      "unit": "bool",
+      "status": "pass",
+      "why": "Protects against false benchmark or regression claims.",
+      "labels": {
+        "trace_id": "306fd4418abdd88a24b02817246da695",
+        "span_id": "5033ff172af39fd2",
+        "run_id": "medium01",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "medium-01-product-route",
+        "target_name": "run",
+        "stage": "replay",
+        "claim_ceiling": "product-green baseline replay",
+        "green_contract_level": "product_green"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "next_action_confidence",
+      "value": "high",
+      "unit": "confidence",
+      "status": "pass",
+      "why": "Tells the operator whether to fix, rerun, inspect, or stop.",
+      "labels": {
+        "trace_id": "306fd4418abdd88a24b02817246da695",
+        "span_id": "5033ff172af39fd2",
+        "run_id": "medium01",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "medium-01-product-route",
+        "target_name": "run",
+        "stage": "replay",
+        "claim_ceiling": "product-green baseline replay",
+        "next_action": "compare/replay evidence"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "mcp_factory.runtime.discovery_child_wait.duration",
+      "value": "unavailable",
+      "unit": "n/a",
+      "status": "unavailable",
+      "why": "Separates analyzer child wait from bridge wait, prelaunch, and closeout.",
+      "labels": {
+        "trace_id": "306fd4418abdd88a24b02817246da695",
+        "span_id": "5033ff172af39fd2",
+        "run_id": "medium01",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "medium-01-product-route",
+        "target_name": "run",
+        "stage": "replay",
+        "claim_ceiling": "product-green baseline replay"
+      },
+      "value_source": "unavailable",
+      "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+    },
+    {
+      "name": "mcp_factory.runtime.subprocess_interrupts.total",
+      "value": "unavailable",
+      "unit": "n/a",
+      "status": "unavailable",
+      "why": "Shows whether failures are clustering in runtime or lane infrastructure instead of product behavior.",
+      "labels": {
+        "trace_id": "306fd4418abdd88a24b02817246da695",
+        "span_id": "5033ff172af39fd2",
+        "run_id": "medium01",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "medium-01-product-route",
+        "target_name": "run",
+        "stage": "replay",
+        "claim_ceiling": "product-green baseline replay"
+      },
+      "value_source": "unavailable",
+      "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+    },
+    {
+      "name": "mcp_factory.pipeline.checkpoint.save.duration",
+      "value": "unavailable",
+      "unit": "n/a",
+      "status": "unavailable",
+      "why": "Shows whether checkpoint persistence is cheap enough for fast iteration.",
+      "labels": {
+        "trace_id": "306fd4418abdd88a24b02817246da695",
+        "span_id": "5033ff172af39fd2",
+        "run_id": "medium01",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "medium-01-product-route",
+        "target_name": "run",
+        "stage": "replay",
+        "claim_ceiling": "product-green baseline replay"
+      },
+      "value_source": "unavailable",
+      "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+    },
+    {
+      "name": "mcp_factory.pipeline.checkpoint.resume_seeded_findings",
+      "value": "unavailable",
+      "unit": "n/a",
+      "status": "unavailable",
+      "why": "Shows how much downstream work checkpoint resume avoided.",
+      "labels": {
+        "trace_id": "306fd4418abdd88a24b02817246da695",
+        "span_id": "5033ff172af39fd2",
+        "run_id": "medium01",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "medium-01-product-route",
+        "target_name": "run",
+        "stage": "replay",
+        "claim_ceiling": "product-green baseline replay"
+      },
+      "value_source": "unavailable",
+      "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+    }
+  ],
+  "claim_ceiling": "telemetry is diagnostic evidence only"
+}

@@ -1,0 +1,44 @@
+{
+  "fixture_id": "contoso_pricing",
+  "dll_name": "contoso_pricing.dll",
+  "depends_on": [
+    "contoso_cs.dll",
+    "contoso_payments.dll"
+  ],
+  "benchmark_role": "pricing_rules",
+  "sentinel_codes": {
+    "0": "PR_OK",
+    "-3001": "PR_ERR_BASE_NOT_LOADED",
+    "-3002": "PR_ERR_RESOLVE_FAILED",
+    "-3003": "PR_ERR_BADPARAM",
+    "-3004": "PR_ERR_PRECONDITION",
+    "-3005": "PR_ERR_RULEDENIED",
+    "-3006": "PR_ERR_BADQUOTE",
+    "-3007": "PR_ERR_STATE"
+  },
+  "canonical_flow": [
+    { "step": 1, "function": "PR_Initialize", "expected_outcome": "verified_success" },
+    { "step": 2, "function": "PR_BindCustomer", "args": { "lpszCustId": "CUST-001" }, "expected_outcome": "verified_success" },
+    { "step": 3, "function": "PR_LoadSkuContext", "args": { "lpszSku": "WDG-XL-BLU", "wQty": 3 }, "expected_outcome": "verified_success" },
+    { "step": 4, "function": "PR_BeginQuote", "expected_outcome": "verified_success" },
+    { "step": 5, "function": "PR_GetQuoteNonce", "args": { "lpszQuoteId": "quote-from-begin" }, "expected_outcome": "verified_success" },
+    { "step": 6, "function": "PR_ApproveRuleWindow", "args": { "lpszQuoteId": "quote-from-begin", "dwNonce": "nonce-from-read" }, "expected_outcome": "verified_success" },
+    { "step": 7, "function": "PR_ApplyTierDiscount", "args": { "lpszQuoteId": "quote-from-begin", "dwRequestedBps": 1000 }, "expected_outcome": "verified_success" },
+    { "step": 8, "function": "PR_ApplyBundleOverride", "args": { "lpszQuoteId": "quote-from-begin", "dwFormatCode": 1 }, "expected_outcome": "verified_success" },
+    { "step": 9, "function": "PR_SealQuote", "args": { "lpszQuoteId": "quote-from-begin" }, "expected_outcome": "verified_success" }
+  ],
+  "functions": [
+    { "name": "PR_Initialize", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [] },
+    { "name": "PR_BindCustomer", "required_preconditions": ["PR_Initialize"], "expected_outcome_class": "verified_success", "canonical_args": { "lpszCustId": "CUST-001" }, "parameters": [ { "name": "lpszCustId", "type": "const char*", "resolved_type": "LPCSTR", "direction": "in", "json_type": "string", "description": "Customer identifier such as CUST-001" } ] },
+    { "name": "PR_LoadSkuContext", "required_preconditions": ["PR_BindCustomer"], "expected_outcome_class": "verified_success", "canonical_args": { "lpszSku": "WDG-XL-BLU", "wQty": 3 }, "parameters": [ { "name": "lpszSku", "type": "const char*", "resolved_type": "LPCSTR", "direction": "in", "json_type": "string", "description": "SKU such as WDG-XL-BLU" }, { "name": "wQty", "type": "WORD", "resolved_type": "WORD", "direction": "in", "json_type": "integer", "description": "Item quantity" } ] },
+    { "name": "PR_BeginQuote", "required_preconditions": ["PR_LoadSkuContext"], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [ { "name": "pOutQuoteId", "type": "char*", "resolved_type": "LPSTR", "direction": "out", "json_type": "string", "description": "Output buffer receiving the quote id" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Size of the output buffer" } ] },
+    { "name": "PR_GetQuoteNonce", "required_preconditions": ["PR_BeginQuote"], "expected_outcome_class": "verified_success", "canonical_args": { "lpszQuoteId": "quote-from-begin" }, "parameters": [ { "name": "lpszQuoteId", "type": "const char*", "resolved_type": "LPCSTR", "direction": "in", "json_type": "string", "description": "Quote id returned by PR_BeginQuote" }, { "name": "pdwNonceOut", "type": "DWORD*", "resolved_type": "DWORD*", "direction": "out", "json_type": "integer", "description": "Output quote nonce" } ] },
+    { "name": "PR_ApproveRuleWindow", "required_preconditions": ["PR_GetQuoteNonce"], "expected_outcome_class": "verified_success", "canonical_args": { "lpszQuoteId": "quote-from-begin", "dwNonce": "nonce-from-read" }, "parameters": [ { "name": "lpszQuoteId", "type": "const char*", "resolved_type": "LPCSTR", "direction": "in", "json_type": "string", "description": "Quote id returned by PR_BeginQuote" }, { "name": "dwNonce", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Quote nonce returned by PR_GetQuoteNonce" } ] },
+    { "name": "PR_ApplyTierDiscount", "required_preconditions": ["PR_ApproveRuleWindow"], "expected_outcome_class": "verified_success", "canonical_args": { "lpszQuoteId": "quote-from-begin", "dwRequestedBps": 1000 }, "parameters": [ { "name": "lpszQuoteId", "type": "const char*", "resolved_type": "LPCSTR", "direction": "in", "json_type": "string", "description": "Quote id returned by PR_BeginQuote" }, { "name": "dwRequestedBps", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Requested tier discount in basis points" }, { "name": "pdwAppliedBpsOut", "type": "DWORD*", "resolved_type": "DWORD*", "direction": "out", "json_type": "integer", "description": "Applied discount basis points" } ], "functional_precondition_example": { "expected_code": -3005, "expected_outcome_class": "functional_precondition_unmet" } },
+    { "name": "PR_ApplyBundleOverride", "required_preconditions": ["PR_ApproveRuleWindow"], "expected_outcome_class": "verified_success", "canonical_args": { "lpszQuoteId": "quote-from-begin", "dwFormatCode": 1 }, "parameters": [ { "name": "lpszQuoteId", "type": "const char*", "resolved_type": "LPCSTR", "direction": "in", "json_type": "string", "description": "Quote id returned by PR_BeginQuote" }, { "name": "dwFormatCode", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Rule format code used as the bundle gate" }, { "name": "pdwTotalOut", "type": "DWORD*", "resolved_type": "DWORD*", "direction": "out", "json_type": "integer", "description": "Output discounted quote total" } ] },
+    { "name": "PR_SealQuote", "required_preconditions": ["PR_ApplyTierDiscount"], "expected_outcome_class": "verified_success", "canonical_args": { "lpszQuoteId": "quote-from-begin" }, "parameters": [ { "name": "lpszQuoteId", "type": "const char*", "resolved_type": "LPCSTR", "direction": "in", "json_type": "string", "description": "Quote id returned by PR_BeginQuote" }, { "name": "pOutSealCode", "type": "char*", "resolved_type": "LPSTR", "direction": "out", "json_type": "string", "description": "Output buffer receiving the seal code" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Seal code output buffer size" } ] },
+    { "name": "PR_GetQuoteState", "required_preconditions": ["PR_BeginQuote"], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [ { "name": "pOutBuf", "type": "char*", "resolved_type": "LPSTR", "direction": "out", "json_type": "string", "description": "Output buffer receiving the quote state" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Quote state output buffer size" } ] },
+    { "name": "PR_GetLastRuleText", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [ { "name": "pOutBuf", "type": "char*", "resolved_type": "LPSTR", "direction": "out", "json_type": "string", "description": "Output buffer receiving the last rule text" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Rule text output buffer size" } ] },
+    { "name": "PR_GetDiagnostics", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [ { "name": "pOutBuf", "type": "char*", "resolved_type": "LPSTR", "direction": "out", "json_type": "string", "description": "Output buffer receiving fixture diagnostics" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Diagnostics output buffer size" } ] }
+  ]
+}

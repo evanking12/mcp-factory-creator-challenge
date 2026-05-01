@@ -1,0 +1,35 @@
+{
+  "fixture_id": "contoso_gateway",
+  "dll_name": "contoso_gateway.dll",
+  "depends_on": [
+    "contoso_transport.dll",
+    "contoso_cs.dll"
+  ],
+  "benchmark_role": "gateway_wide_strings",
+  "sentinel_codes": {
+    "0": "GW_OK",
+    "-7001": "GW_ERR_ENV",
+    "-7002": "GW_ERR_BADPARAM",
+    "-7003": "GW_ERR_PRECONDITION",
+    "-7004": "GW_ERR_BADHANDLE"
+  },
+  "canonical_flow": [
+    { "step": 1, "function": "GW_Initialize", "expected_outcome": "verified_success" },
+    { "step": 2, "function": "GW_BindCustomerW", "args": { "lpwszCustId": "CUST-001" }, "expected_outcome": "verified_success" },
+    { "step": 3, "function": "GW_LinkTransport", "args": { "dwTransportHandle": 1073745921 }, "expected_outcome": "verified_success" },
+    { "step": 4, "function": "GW_GetWideNonce", "args": { "dwTransportHandle": 1073745921 }, "expected_outcome": "verified_success" },
+    { "step": 5, "function": "GW_RenderBridgeW", "args": { "dwTransportHandle": 1073745921 }, "expected_outcome": "verified_success" }
+  ],
+  "functions": [
+    { "name": "GW_Initialize", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [] },
+    { "name": "GW_BindCustomerW", "required_preconditions": [ "GW_Initialize" ], "expected_outcome_class": "verified_success", "canonical_args": { "lpwszCustId": "CUST-001" }, "parameters": [ { "name": "lpwszCustId", "type": "const wchar_t*", "resolved_type": "LPCWSTR", "direction": "in", "json_type": "string", "description": "Wide customer identifier" } ] },
+    { "name": "GW_LinkTransport", "required_preconditions": [ "GW_Initialize" ], "expected_outcome_class": "verified_success", "canonical_args": { "dwTransportHandle": 1073745921 }, "parameters": [ { "name": "dwTransportHandle", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Opaque transport handle" } ] },
+    { "name": "GW_GetWideNonce", "required_preconditions": [ "GW_LinkTransport" ], "expected_outcome_class": "verified_success", "canonical_args": { "dwTransportHandle": 1073745921 }, "parameters": [ { "name": "dwTransportHandle", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Opaque transport handle" }, { "name": "pdwNonceOut", "type": "DWORD*", "resolved_type": "DWORD*", "direction": "out", "json_type": "integer", "description": "Output gateway nonce" } ] },
+    { "name": "GW_RenderBridgeW", "required_preconditions": [ "GW_LinkTransport" ], "expected_outcome_class": "verified_success", "canonical_args": { "dwTransportHandle": 1073745921 }, "parameters": [ { "name": "dwTransportHandle", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Opaque transport handle" }, { "name": "pOutBuf", "type": "wchar_t*", "resolved_type": "LPWSTR", "direction": "out", "json_type": "string", "description": "Output wide-string bridge description" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Wide-string output buffer size" } ] },
+    { "name": "GW_FormatModeW", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": { "dwModeCode": 2 }, "parameters": [ { "name": "dwModeCode", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Gateway mode code" }, { "name": "pOutBuf", "type": "wchar_t*", "resolved_type": "LPWSTR", "direction": "out", "json_type": "string", "description": "Output wide-string mode name" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Wide-string output buffer size" } ] },
+    { "name": "GW_A1W", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": { "lpwszIn": "CUST-001" }, "parameters": [ { "name": "lpwszIn", "type": "const wchar_t*", "resolved_type": "LPCWSTR", "direction": "in", "json_type": "string", "description": "Reduced-clarity wide-string input" }, { "name": "pOutBuf", "type": "wchar_t*", "resolved_type": "LPWSTR", "direction": "out", "json_type": "string", "description": "Reduced-clarity wide-string output" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Output buffer size" } ] },
+    { "name": "GW_ResetGateway", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [] },
+    { "name": "GW_GetLastErrorTextW", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [ { "name": "pOutBuf", "type": "wchar_t*", "resolved_type": "LPWSTR", "direction": "out", "json_type": "string", "description": "Output last-error buffer" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Wide error buffer size" } ] },
+    { "name": "GW_GetDiagnosticsW", "required_preconditions": [], "expected_outcome_class": "verified_success", "canonical_args": {}, "parameters": [ { "name": "pOutBuf", "type": "wchar_t*", "resolved_type": "LPWSTR", "direction": "out", "json_type": "string", "description": "Output diagnostics buffer" }, { "name": "dwBufLen", "type": "DWORD", "resolved_type": "DWORD", "direction": "in", "json_type": "integer", "description": "Diagnostics buffer size" } ] }
+  ]
+}

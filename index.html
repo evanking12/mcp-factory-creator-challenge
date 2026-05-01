@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MCP Factory Creator Replay</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="assets/replay.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="brand">MCP Factory Replay</div>
+      <div id="run-subtitle" class="subtitle">Static replay of real compiled/no-source run artifacts</div>
+    </div>
+    <nav class="top-actions">
+      <a class="link-button" href="data/index.json">Replay Index</a>
+      <button id="refresh" class="button secondary" type="button">Reload Data</button>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <aside class="rail">
+      <div class="rail-head">
+        <h1>Replay Runs</h1>
+        <span id="run-count" class="muted">0</span>
+      </div>
+      <button id="overview-button" class="run-button overview-button active" type="button">
+        <strong>Overview</strong>
+        <span>Trust model, evidence philosophy, and how to read the replay.</span>
+      </button>
+      <input id="run-filter" class="input" type="text" placeholder="Filter runs" />
+      <div id="run-list" class="run-list"></div>
+      <div class="rail-note">
+        <strong>Claim ceiling</strong>
+        <span>Static replay only. No hosted backend, model credential, bridge, Ghidra install, or browser-side binary execution.</span>
+      </div>
+    </aside>
+
+    <section class="main">
+      <section id="overview-view" class="overview-view">
+        <section class="overview-hero product-hero">
+          <div>
+            <div class="label">Overview</div>
+            <div class="hero-title">MCP Factory makes opaque compiled enterprise systems usable by AI agents.</div>
+            <p class="hero-subtitle">It does that by recovering evidence, turning it into structured artifacts, and refusing to trust outputs that cannot be verified.</p>
+          </div>
+          <div class="overview-boundary">
+            <strong>This demo is a static replay of real local runs.</strong>
+            <span>Live execution stays local because it requires user-owned model credentials, binary-analysis dependencies, and safe execution boundaries.</span>
+          </div>
+        </section>
+
+        <section class="story-steps">
+          <article class="story-step">
+            <span>1</span>
+            <strong>Start with the hard input.</strong>
+            <p>A compiled/no-source enterprise artifact enters the pipeline. Source may exist for synthetic evaluation, but the product route cannot rely on it.</p>
+          </article>
+          <article class="story-step">
+            <span>2</span>
+            <strong>Recover evidence, not guesses.</strong>
+            <p>The pipeline uses route authority, target analysis, semantic comparison, and durable artifacts to make recovered behavior reviewable.</p>
+          </article>
+          <article class="story-step">
+            <span>3</span>
+            <strong>Gate what agents can trust.</strong>
+            <p>Outputs become product-green, comparable, diagnostic, frontier, or blocked based on evidence, not model confidence.</p>
+          </article>
+        </section>
+
+        <section class="panel challenge-inputs-panel">
+          <div class="section-head">
+            <h2>What The Pipeline Receives</h2>
+            <span class="state-pill">compiled/no-source boundary</span>
+          </div>
+          <div class="input-boundary-grid">
+            <article>
+              <strong>Fixture source is inspectable.</strong>
+              <p>The public bundle includes synthetic source fixtures, truth manifests, package manifests, and build notes so reviewers can understand what the suites are designed to test.</p>
+              <a class="artifact-link" href="challenge-inputs/source-fixtures/README.md">Open source fixtures</a>
+            </article>
+            <article>
+              <strong>The product route does not use source.</strong>
+              <p>The replayed pipeline treats compiled artifacts as the route input. Source exists for evaluation and transparency, not as a shortcut for recovery.</p>
+              <a class="artifact-link" href="challenge-inputs/compiled-artifacts.json">Open compiled metadata</a>
+            </article>
+            <article>
+              <strong>Raw binaries are not hosted here.</strong>
+              <p>The public demo publishes hashes and metadata, not executable binaries. Live analysis remains local because it needs user-owned credentials and binary-analysis dependencies.</p>
+              <a class="artifact-link" href="challenge-inputs/README.md">Read input boundary</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="overview-deep-grid">
+          <section class="panel overview-wide-panel">
+            <div class="section-head">
+              <h2>Why It Matters</h2>
+              <span class="state-pill">real workflow</span>
+            </div>
+            <div class="overview-list">
+              <div><strong>Agents need reliable tools.</strong><span>Enterprise systems are often opaque, old, compiled, or poorly documented.</span></div>
+              <div><strong>LLM guesses are not enough.</strong><span>The product records what was consumed, emitted, and proved before downstream agents can use it.</span></div>
+              <div><strong>Failures should localize.</strong><span>If a run is blocked, the UI shows which boundary owns the blocker.</span></div>
+            </div>
+          </section>
+        </section>
+
+        <section class="panel codex-workflow-panel">
+          <div class="section-head">
+            <h2>How Codex Is Used</h2>
+            <span class="state-pill">built with Codex</span>
+          </div>
+          <div class="codex-workflow-grid">
+            <article>
+              <strong>Codex carries the implementation loop.</strong>
+              <p>It edits code, runs checks, inspects artifacts, writes replay data, and keeps the local demo moving without exposing a live backend publicly.</p>
+            </article>
+            <article>
+              <strong>Dynamic campaigns keep work bounded.</strong>
+              <p>Each campaign has a goal, stop gate, claim ceiling, validation plan, and next action so iteration does not become vague exploration.</p>
+            </article>
+            <article>
+              <strong>The product makes AI work safer.</strong>
+              <p>Models can help recover, summarize, and route evidence, but artifacts decide whether an output becomes comparable, product-green, diagnostic, or blocked.</p>
+            </article>
+            <article>
+              <strong>Artifacts are the shared memory.</strong>
+              <p>Run traces, stage artifacts, compare reports, signal maps, and closeouts let Codex and the human reviewer reason from evidence instead of chat memory.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel suite-overview-panel">
+          <div class="section-head">
+            <h2>How The Test Suite Builds Confidence</h2>
+            <span class="state-pill">easy to hard</span>
+          </div>
+          <p class="principles-intro">
+            The suite is not a random benchmark list. Each step is authored to break a different part of the product route before the next step is trusted.
+          </p>
+          <div class="suite-ladder-grid">
+            <article class="suite-card pass">
+              <span>Easy01</span>
+              <strong>Can the route work at all?</strong>
+              <p>Proves the compiled/no-source route can admit the artifact, recover readable evidence, and reach a basic semantic checkpoint.</p>
+            </article>
+            <article class="suite-card pass">
+              <span>Medium01</span>
+              <strong>Can attribution survive more targets?</strong>
+              <p>Adds shared-code and multi-target pressure so evidence cannot be blended across recovered callable surfaces.</p>
+            </article>
+            <article class="suite-card pass">
+              <span>Medium02</span>
+              <strong>Can comparability stay repeatable?</strong>
+              <p>Acts as the current product-route anchor for route authority, repeatable semantic proof, and safe-to-compare behavior.</p>
+            </article>
+            <article class="suite-card pass">
+              <span>Hard01</span>
+              <strong>Can enterprise decisions survive?</strong>
+              <p>Stresses branch trust, rejected-object evidence, replay trust, closeout, and claim ceilings under harder fixture behavior.</p>
+            </article>
+            <article class="suite-card warn">
+              <span>Hard02 / Hard03</span>
+              <strong>Where does the product still fail closed?</strong>
+              <p>Shows frontier and blocker cases: stale authority, object-bound decisions, unsupported-target quarantine, and unsafe-path handling.</p>
+            </article>
+            <article class="suite-card warn">
+              <span>Batch B</span>
+              <strong>Can this scale beyond one curated case?</strong>
+              <p>Package-scale pressure checks whether the same route and evidence contracts survive across a broader compiled fixture batch.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="overview-deep-grid">
+          <section class="panel overview-wide-panel">
+            <div class="section-head">
+              <h2>What To Click First</h2>
+              <span class="state-pill">evidence gates</span>
+            </div>
+            <div class="overview-list">
+              <div><strong>Easy01 through Hard01</strong><span>The main success path: route proof, attribution, repeatability, and enterprise survivability.</span></div>
+              <div><strong>Pipeline Mechanics</strong><span>The fastest way to see what happened in a run.</span></div>
+              <div><strong>How This Is Verifiable</strong><span>The fastest way to see why the output can or cannot be trusted.</span></div>
+              <div><strong>Hard02 and Hard03</strong><span>Frontier rows that show fail-closed behavior instead of pretending everything is solved.</span></div>
+            </div>
+          </section>
+
+          <section class="panel overview-wide-panel">
+            <div class="section-head">
+              <h2>Artifact Vocabulary</h2>
+              <span class="state-pill">what to inspect</span>
+            </div>
+            <div class="artifact-vocab">
+              <code>compiled-ingest-summary</code>
+              <code>compiled-ingest-compare-report</code>
+              <code>stage-artifacts</code>
+              <code>run-trace</code>
+              <code>run-metrics</code>
+              <code>hard-family signal maps</code>
+              <code>challenge ladder metadata</code>
+            </div>
+          </section>
+        </section>
+
+        <section class="panel principles-panel">
+          <div class="section-head">
+            <h2>Core Engineering Principles</h2>
+            <span class="state-pill">engineering philosophy</span>
+          </div>
+          <p class="principles-intro">
+            MCP Factory is built around evidence boundaries: agents can help operate the system, but artifacts and gates decide what can be trusted.
+          </p>
+          <div class="principles-grid">
+            <article class="principle-card">
+              <span>01</span>
+              <strong>Compiled/no-source first</strong>
+              <p>Prove behavior from the artifact the product actually receives. Synthetic source can help evaluate the fixture, but it cannot become a shortcut in the product route.</p>
+            </article>
+            <article class="principle-card">
+              <span>02</span>
+              <strong>Artifact-backed claims</strong>
+              <p>No durable evidence, no stronger claim. Route summaries, stage artifacts, compare reports, traces, and closeout records are what make a replay reviewable.</p>
+            </article>
+            <article class="principle-card">
+              <span>03</span>
+              <strong>Fail closed</strong>
+              <p>Missing route, semantic, artifact, or closeout proof downgrades the run to diagnostic, frontier, or blocked instead of letting an LLM explanation overrule the evidence.</p>
+            </article>
+            <article class="principle-card">
+              <span>04</span>
+              <strong>Smallest proof surface</strong>
+              <p>Use targeted checkpoints and stage-local evidence before spending expensive full reruns. The pipeline should localize the first untrusted boundary.</p>
+            </article>
+            <article class="principle-card">
+              <span>05</span>
+              <strong>Suites as breakpoints</strong>
+              <p>Easy, medium, and hard cases are authored to attack different seams: route entry, attribution, comparability, branch trust, stale authority, and unsafe-path handling.</p>
+            </article>
+            <article class="principle-card">
+              <span>06</span>
+              <strong>Honest claim ceilings</strong>
+              <p>Replay-backed, product-green, comparable, frontier, diagnostic, and blocked mean different things. The UI preserves those distinctions so the demo does not overclaim.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="overview-deep-grid">
+          <section class="panel">
+            <div class="section-head">
+              <h2>Why This Fits The Challenge</h2>
+              <span class="state-pill">contest signal</span>
+            </div>
+            <div class="overview-list">
+              <div><strong>Value</strong><span>Shows a practical workflow problem: making opaque enterprise systems safe for downstream AI agents.</span></div>
+              <div><strong>Execution</strong><span>Uses real replay data, real job IDs, stage artifacts, and trust gates instead of a mock-only pitch.</span></div>
+              <div><strong>Polish</strong><span>Keeps the public demo static and safe while still exposing enough evidence for technical review.</span></div>
+            </div>
+          </section>
+        </section>
+      </section>
+
+      <div id="run-view" class="run-view">
+      <section class="summary">
+        <div>
+          <div class="label">Selected Replay</div>
+          <div id="run-title" class="job-title">Loading replay data</div>
+          <p id="run-summary" class="summary-text">Reading static JSON artifacts.</p>
+        </div>
+        <div class="summary-grid">
+          <div class="metric">
+            <span>Safe To Compare</span>
+            <strong id="metric-compare">n/a</strong>
+          </div>
+          <div class="metric">
+            <span>Baseline Contract</span>
+            <strong id="metric-green">n/a</strong>
+          </div>
+          <div class="metric">
+            <span>Targets</span>
+            <strong id="metric-targets">n/a</strong>
+          </div>
+          <div class="metric">
+            <span>Verified Functions</span>
+            <strong id="metric-verified">n/a</strong>
+          </div>
+          <div class="metric">
+            <span>Duration</span>
+            <strong id="metric-duration">n/a</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="pipeline-wrap">
+        <div class="section-head">
+          <h2>Pipeline Replay</h2>
+          <span id="pipeline-state" class="state-pill">static replay</span>
+        </div>
+        <div id="pipeline" class="pipeline"></div>
+      </section>
+
+      <section class="panel mechanics-panel">
+        <div class="section-head">
+          <h2>Pipeline Mechanics</h2>
+          <span class="state-pill">what happened</span>
+        </div>
+        <div id="pipeline-mechanics" class="pipeline-mechanics"></div>
+      </section>
+
+      <section class="details">
+        <div class="log-panel">
+          <div class="section-head">
+            <h2 id="log-title">Replay Evidence Log</h2>
+            <span id="event-count" class="muted">0 events</span>
+          </div>
+          <div id="stage-explanation" class="stage-explanation"></div>
+          <pre id="log" class="log">Select a run or stage.</pre>
+        </div>
+
+        <section class="panel">
+          <div class="section-head">
+            <h2>Artifacts And Ground Truth Boundary</h2>
+            <span class="state-pill">derived fields</span>
+          </div>
+          <div id="artifact-list" class="artifact-list"></div>
+        </section>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <h2>How This Is Verifiable</h2>
+          <span class="state-pill">trust gate</span>
+        </div>
+        <div id="verifiability-list" class="verifiability-list"></div>
+      </section>
+
+      <section class="evidence-grid">
+        <section class="panel">
+          <div class="section-head">
+            <h2>Challenge Pressure</h2>
+            <span class="state-pill">suite ladder</span>
+          </div>
+          <div id="challenge-profile" class="challenge-profile"></div>
+        </section>
+      </section>
+
+      <section class="stage-artifact-panel">
+        <div class="section-head">
+          <div>
+            <h2 id="stage-artifact-title">Stage Artifacts</h2>
+            <p id="stage-artifact-purpose" class="small">Select a stage to inspect consumed, emitted, and proof artifacts.</p>
+          </div>
+          <span class="state-pill">sanitized derived sidecars</span>
+        </div>
+        <div id="stage-artifacts" class="stage-artifacts"></div>
+      </section>
+
+      <section class="evidence-grid">
+        <section class="panel">
+          <h2>Recovered / Expected Flow</h2>
+          <div id="flow-list" class="flow-list"></div>
+        </section>
+
+        <section class="panel">
+          <h2>Target Evidence</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Target</th>
+                  <th>Status</th>
+                  <th>Duration</th>
+                  <th>Evidence</th>
+                </tr>
+              </thead>
+              <tbody id="target-table"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <section class="evidence-grid">
+        <section class="panel">
+          <div class="section-head">
+            <div>
+              <h2>OpenTelemetry-Shaped Metrics</h2>
+              <p class="small">Planned diagnostic expansion. Current values are derived from replay artifacts, estimates, or explicit unavailable placeholders.</p>
+            </div>
+            <span class="state-pill">next expansion</span>
+          </div>
+          <div id="metric-list" class="telemetry-list"></div>
+        </section>
+
+        <aside class="stage-panel">
+          <h2>Stage Details</h2>
+          <div id="stage-details" class="stage-details"></div>
+        </aside>
+      </section>
+
+      <footer class="footer">
+        <span>Static replay of real MCP Factory local runs/artifacts. No live backend, hosted credential, Ghidra bridge, or hosted binary execution.</span>
+        <span>Reason: live analysis requires user-owned provider credentials, local binary-analysis dependencies, and safe local execution boundaries.</span>
+        <span id="footer-claim">Telemetry routes engineering work; it does not prove product green by itself.</span>
+      </footer>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/replay.js"></script>
+</body>
+</html>

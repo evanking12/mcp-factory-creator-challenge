@@ -1,0 +1,51 @@
+{
+  "run_id": "hard02",
+  "claim_ceiling": "standing-baseline signal, not public replay",
+  "artifact_mode": "sanitized_derived_sidecars_only",
+  "stage_artifacts": [
+    {
+      "stage": "S03-S07",
+      "name": "Frontier signal boundary",
+      "purpose": "Represent a known hard-family frontier without pretending it is a sanitized public replay run.",
+      "consumes": [
+        {
+          "stage": "S03-S07",
+          "role": "consumes",
+          "name": "hard-family signal map",
+          "kind": "canonical truth doc",
+          "status": "warn",
+          "availability": "sanitized_reference",
+          "value_source": "derived_summary",
+          "proof_meaning": "Names the current hard-family pressure and blocker routing without publishing raw sessions.",
+          "path": "docs/architecture/testing_strategy/HARD-FAMILY-FAILURE-SIGNAL-MAP.md"
+        }
+      ],
+      "emits": [
+        {
+          "stage": "S03-S07",
+          "role": "emits",
+          "name": "Hard02 frontier status",
+          "kind": "derived status card",
+          "status": "warn",
+          "availability": "included",
+          "value_source": "derived_summary",
+          "proof_meaning": "not bundled as a sanitized public replay; current truth marks a comparable finish-line signal but not product-green promotion",
+          "link": "data/runs/hard02/run-trace.json"
+        }
+      ],
+      "proves": [
+        {
+          "stage": "S03-S07",
+          "role": "proves",
+          "name": "claim ceiling",
+          "kind": "frontier boundary",
+          "status": "warn",
+          "availability": "included",
+          "value_source": "derived_summary",
+          "proof_meaning": "standing-baseline signal, not public replay",
+          "link": "data/runs/hard02/stage-artifacts.json"
+        }
+      ]
+    }
+  ]
+}

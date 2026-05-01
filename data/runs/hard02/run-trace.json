@@ -1,0 +1,22 @@
+{
+  "trace_id": "9d0a30472cefaef089ef926c33de7324",
+  "spans": [
+    {
+      "span_id": "b606323c470537b8",
+      "name": "Frontier pressure signal",
+      "stage": "S03-S07",
+      "status": "diagnostic",
+      "duration_sec": 0,
+      "message": "not bundled as a sanitized public replay; current truth marks a comparable finish-line signal but not product-green promotion",
+      "trace_id": "9d0a30472cefaef089ef926c33de7324",
+      "span_key": "frontier_signal",
+      "claim_ceiling": "standing-baseline signal, not public replay",
+      "value_source": "derived_summary",
+      "run_id": "hard02",
+      "suite_id": "spectrum_transaction_release_settlement_suite",
+      "case_id": "hard02",
+      "target_name": "frontier"
+    }
+  ],
+  "claim_ceiling": "telemetry-shaped metrics are planned diagnostic expansion only"
+}

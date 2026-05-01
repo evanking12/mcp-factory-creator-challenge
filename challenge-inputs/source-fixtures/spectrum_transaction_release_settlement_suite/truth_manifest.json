@@ -1,0 +1,143 @@
+{
+  "fixture_id": "spectrum_transaction_release_settlement_suite_compiled",
+  "suite_id": "spectrum_transaction_release_settlement_suite",
+  "suite_name": "Spectrum Transaction Release Settlement Suite",
+  "proof_class": "compiled_local_binary",
+  "product_validity": "product-valid",
+  "source_family_classification": "architecture-proof",
+  "northstar_classification": "architecture-proof",
+  "compiled_suite_purpose": "Compiled binary embodiment of the Spectrum easy-to-hard proving family.",
+    "preferred_expansion_order": [
+        "easy-01",
+        "medium-01",
+        "medium-02",
+        "hard-01",
+        "hard-02",
+        "hard-03"
+  ],
+  "easy_01": {
+    "active_dlls": [
+      "spectrum_session_bootstrap.dll",
+      "spectrum_reservation_stage.dll",
+      "spectrum_release_commit.dll",
+      "spectrum_audit_trace.dll"
+    ],
+    "expected_symbol_flow": [
+      "SP_OpenOperatorSession",
+      "SP_IssueReleaseHold",
+      "SP_CommitRelease",
+      "SP_RecordReleaseReceipt"
+    ]
+  },
+  "dlls": [
+    {
+      "dll_name": "spectrum_session_bootstrap.dll",
+      "source_file": "tests/fixtures/spectrum_transaction_release_settlement_suite/src/spectrum_session_bootstrap.c",
+      "exports": [
+        "SP_OpenOperatorSession"
+      ],
+      "role": "easy_runtime_target"
+    },
+    {
+      "dll_name": "spectrum_reservation_stage.dll",
+      "source_file": "tests/fixtures/spectrum_transaction_release_settlement_suite/src/spectrum_reservation_stage.c",
+      "exports": [
+        "SP_IssueReleaseHold"
+      ],
+      "role": "easy_runtime_target"
+    },
+    {
+      "dll_name": "spectrum_dispatch_preview.dll",
+      "source_file": "tests/fixtures/spectrum_transaction_release_settlement_suite/src/spectrum_dispatch_preview.c",
+      "exports": [
+        "SP_PrepareReleasePreview"
+      ],
+      "role": "future_medium_target"
+    },
+    {
+      "dll_name": "spectrum_fee_quote.dll",
+      "source_file": "tests/fixtures/spectrum_transaction_release_settlement_suite/src/spectrum_fee_quote.c",
+      "exports": [
+        "SP_StageReleaseFeeQuote"
+      ],
+      "role": "future_medium_target"
+    },
+    {
+      "dll_name": "spectrum_attestation_stage.dll",
+      "source_file": "tests/fixtures/spectrum_transaction_release_settlement_suite/src/spectrum_attestation_stage.c",
+      "exports": [
+        "SP_EmitReleaseAttestation"
+      ],
+      "role": "future_medium_target"
+    },
+    {
+      "dll_name": "spectrum_invoice_sync.dll",
+      "source_file": "tests/fixtures/spectrum_transaction_release_settlement_suite/src/spectrum_invoice_sync.c",
+      "exports": [
+        "SP_StageReleaseInvoice"
+      ],
+      "role": "future_medium_target"
+    },
+    {
+      "dll_name": "spectrum_entitlement_sync.dll",
+      "source_file": "tests/fixtures/spectrum_transaction_release_settlement_suite/src/spectrum_entitlement_sync.c",
+      "exports": [
+        "SP_StageCustomerEntitlementUpdate"
+      ],
+      "role": "future_medium_target"
+    },
+    {
+      "dll_name": "spectrum_release_commit.dll",
+      "source_file": "tests/fixtures/spectrum_transaction_release_settlement_suite/src/spectrum_release_commit.c",
+      "exports": [
+        "SP_CommitRelease"
+      ],
+      "role": "easy_runtime_target"
+    },
+    {
+      "dll_name": "spectrum_replay_branch.dll",
+      "source_file": "tests/fixtures/spectrum_transaction_release_settlement_suite/src/spectrum_replay_branch.c",
+      "exports": [
+        "SP_ReplayReleaseBranch"
+      ],
+      "role": "future_hard_target"
+    },
+    {
+      "dll_name": "spectrum_settlement_reconcile.dll",
+      "source_file": "tests/fixtures/spectrum_transaction_release_settlement_suite/src/spectrum_settlement_reconcile.c",
+      "exports": [
+        "SP_VerifyReservedRelease",
+        "SP_ConfirmAttestedRelease",
+        "SP_InvalidateStaleAttestedRelease",
+        "SP_SelectTrustedBranch"
+      ],
+      "role": "future_medium_hard_target"
+    },
+        {
+            "dll_name": "spectrum_audit_trace.dll",
+            "source_file": "tests/fixtures/spectrum_transaction_release_settlement_suite/src/spectrum_audit_trace.c",
+            "exports": [
+                "SP_RecordReleaseReceipt",
+                "SP_InvalidateUntrustedBranch",
+                "SP_RecordStaleAttestationInvalidation"
+            ],
+            "role": "easy_runtime_target"
+        },
+        {
+            "dll_name": "spectrum_quarantine_gate.dll",
+            "source_file": "tests/fixtures/spectrum_transaction_release_settlement_suite/src/spectrum_quarantine_gate.c",
+            "exports": [
+                "SP_QuarantineUnsupportedTarget"
+            ],
+            "role": "future_hard_target"
+        },
+        {
+            "dll_name": "spectrum_quarantine_audit.dll",
+            "source_file": "tests/fixtures/spectrum_transaction_release_settlement_suite/src/spectrum_quarantine_audit.c",
+            "exports": [
+                "SP_RecordUnsupportedTargetQuarantine"
+            ],
+            "role": "future_hard_target"
+        }
+    ]
+}

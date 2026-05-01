@@ -1,0 +1,354 @@
+{
+  "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+  "metrics": [
+    {
+      "name": "bundled_dll_count",
+      "value": 10,
+      "unit": "count",
+      "status": "pass",
+      "why": "Shows package-scale intake breadth before expensive deep analysis.",
+      "labels": {
+        "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+        "span_id": "40c08ea2d46ae01c",
+        "run_id": "batch_b",
+        "suite_id": "contoso-business-suite",
+        "case_id": "contoso-business-suite-batch-b",
+        "target_name": "run",
+        "stage": "package-replay",
+        "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled",
+        "dependency_only": "2",
+        "runtime_target": "8"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "runtime_target_count",
+      "value": 8,
+      "unit": "count",
+      "status": "pass",
+      "why": "Shows selective activation: not every DLL is deeply probed immediately.",
+      "labels": {
+        "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+        "span_id": "40c08ea2d46ae01c",
+        "run_id": "batch_b",
+        "suite_id": "contoso-business-suite",
+        "case_id": "contoso-business-suite-batch-b",
+        "target_name": "run",
+        "stage": "package-replay",
+        "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled",
+        "selected_policy": "curated_runtime_subset"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "dependency_confidence_counts",
+      "value": {
+        "high": 9,
+        "medium": 1
+      },
+      "unit": "counts",
+      "status": "pass",
+      "why": "Shows that package intake preserves confidence, dependency, and role labels.",
+      "labels": {
+        "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+        "span_id": "40c08ea2d46ae01c",
+        "run_id": "batch_b",
+        "suite_id": "contoso-business-suite",
+        "case_id": "contoso-business-suite-batch-b",
+        "target_name": "run",
+        "stage": "package-replay",
+        "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled",
+        "source": "package_manifest"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "candidate_comparability_state",
+      "value": "partial_closeout_stalled",
+      "unit": "state",
+      "status": "warn",
+      "why": "Distinguishes diagnostic output from evidence that can support comparison.",
+      "labels": {
+        "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+        "span_id": "40c08ea2d46ae01c",
+        "run_id": "batch_b",
+        "suite_id": "contoso-business-suite",
+        "case_id": "contoso-business-suite-batch-b",
+        "target_name": "run",
+        "stage": "package-replay",
+        "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled",
+        "not_substitute_for": "Spectrum product-green proof"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "next_action_confidence",
+      "value": "medium",
+      "unit": "confidence",
+      "status": "pass",
+      "why": "Tells the operator whether to fix, rerun, inspect, or stop.",
+      "labels": {
+        "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+        "span_id": "40c08ea2d46ae01c",
+        "run_id": "batch_b",
+        "suite_id": "contoso-business-suite",
+        "case_id": "contoso-business-suite-batch-b",
+        "target_name": "run",
+        "stage": "package-replay",
+        "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled",
+        "next_action": "present as partial package-scale pressure evidence; do not claim clean product green"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "batch_b_completed_rows",
+      "value": "7/8",
+      "unit": "rows",
+      "status": "partial",
+      "why": "Shows the useful partial campaign result without implying clean campaign closeout.",
+      "labels": {
+        "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+        "span_id": "40c08ea2d46ae01c",
+        "run_id": "batch_b",
+        "suite_id": "contoso-business-suite",
+        "case_id": "contoso-business-suite-batch-b",
+        "target_name": "run",
+        "stage": "package-replay",
+        "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled",
+        "campaign_id": "b32b323a"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "verified_success_annotations",
+      "value": 89,
+      "unit": "functions",
+      "status": "partial",
+      "why": "Counts verified_success annotations in per-job invocable descriptions; useful for presentation, weaker than a final campaign audit.",
+      "labels": {
+        "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+        "span_id": "40c08ea2d46ae01c",
+        "run_id": "batch_b",
+        "suite_id": "contoso-business-suite",
+        "case_id": "contoso-business-suite-batch-b",
+        "target_name": "run",
+        "stage": "package-replay",
+        "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled",
+        "invocables_total": "100"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "artifact_backed_findings_verified",
+      "value": 20,
+      "unit": "functions",
+      "status": "partial",
+      "why": "Counts verified findings from jobs that wrote findings files before closeout stalled.",
+      "labels": {
+        "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+        "span_id": "40c08ea2d46ae01c",
+        "run_id": "batch_b",
+        "suite_id": "contoso-business-suite",
+        "case_id": "contoso-business-suite-batch-b",
+        "target_name": "run",
+        "stage": "package-replay",
+        "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled",
+        "inferred_success": "4"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "captured_kpi_verified",
+      "value": 11,
+      "unit": "functions",
+      "status": "pass",
+      "why": "Shows the strongest clean captured row available in this partial run.",
+      "labels": {
+        "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+        "span_id": "40c08ea2d46ae01c",
+        "run_id": "batch_b",
+        "suite_id": "contoso-business-suite",
+        "case_id": "contoso-business-suite-batch-b",
+        "target_name": "run",
+        "stage": "package-replay",
+        "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled",
+        "target": "contoso_config",
+        "job_id": "3280d155",
+        "total_functions": "12"
+      },
+      "value_source": "derived_summary"
+    },
+    {
+      "name": "mcp_factory.run.status_staleness",
+      "value": "unavailable",
+      "unit": "n/a",
+      "status": "unavailable",
+      "why": "Tells an operator whether a run is alive, stale, or misleading.",
+      "labels": {
+        "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+        "span_id": "40c08ea2d46ae01c",
+        "run_id": "batch_b",
+        "suite_id": "contoso-business-suite",
+        "case_id": "contoso-business-suite-batch-b",
+        "target_name": "run",
+        "stage": "package-replay",
+        "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled"
+      },
+      "value_source": "unavailable",
+      "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+    },
+    {
+      "name": "mcp_factory.pipeline.stage_span.duration",
+      "value": "unavailable",
+      "unit": "n/a",
+      "status": "unavailable",
+      "why": "Shows where time is spent so expensive reruns are not used blindly.",
+      "labels": {
+        "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+        "span_id": "40c08ea2d46ae01c",
+        "run_id": "batch_b",
+        "suite_id": "contoso-business-suite",
+        "case_id": "contoso-business-suite-batch-b",
+        "target_name": "run",
+        "stage": "package-replay",
+        "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled"
+      },
+      "value_source": "unavailable",
+      "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+    },
+    {
+      "name": "mcp_factory.runtime.discovery_child_wait.duration",
+      "value": "unavailable",
+      "unit": "n/a",
+      "status": "unavailable",
+      "why": "Separates analyzer child wait from bridge wait, prelaunch, and closeout.",
+      "labels": {
+        "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+        "span_id": "40c08ea2d46ae01c",
+        "run_id": "batch_b",
+        "suite_id": "contoso-business-suite",
+        "case_id": "contoso-business-suite-batch-b",
+        "target_name": "run",
+        "stage": "package-replay",
+        "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled"
+      },
+      "value_source": "unavailable",
+      "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+    },
+    {
+      "name": "mcp_factory.runtime.subprocess_interrupts.total",
+      "value": "unavailable",
+      "unit": "n/a",
+      "status": "unavailable",
+      "why": "Shows whether failures are clustering in runtime or lane infrastructure instead of product behavior.",
+      "labels": {
+        "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+        "span_id": "40c08ea2d46ae01c",
+        "run_id": "batch_b",
+        "suite_id": "contoso-business-suite",
+        "case_id": "contoso-business-suite-batch-b",
+        "target_name": "run",
+        "stage": "package-replay",
+        "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled"
+      },
+      "value_source": "unavailable",
+      "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+    },
+    {
+      "name": "mcp_factory.artifacts.required_emission_lag.duration",
+      "value": "unavailable",
+      "unit": "n/a",
+      "status": "unavailable",
+      "why": "Separates a completed stage from evidence that is actually readable.",
+      "labels": {
+        "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+        "span_id": "40c08ea2d46ae01c",
+        "run_id": "batch_b",
+        "suite_id": "contoso-business-suite",
+        "case_id": "contoso-business-suite-batch-b",
+        "target_name": "run",
+        "stage": "package-replay",
+        "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled"
+      },
+      "value_source": "unavailable",
+      "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+    },
+    {
+      "name": "mcp_factory.pipeline.checkpoint.save.duration",
+      "value": "unavailable",
+      "unit": "n/a",
+      "status": "unavailable",
+      "why": "Shows whether checkpoint persistence is cheap enough for fast iteration.",
+      "labels": {
+        "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+        "span_id": "40c08ea2d46ae01c",
+        "run_id": "batch_b",
+        "suite_id": "contoso-business-suite",
+        "case_id": "contoso-business-suite-batch-b",
+        "target_name": "run",
+        "stage": "package-replay",
+        "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled"
+      },
+      "value_source": "unavailable",
+      "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+    },
+    {
+      "name": "mcp_factory.pipeline.checkpoint.resume_seeded_findings",
+      "value": "unavailable",
+      "unit": "n/a",
+      "status": "unavailable",
+      "why": "Shows how much downstream work checkpoint resume avoided.",
+      "labels": {
+        "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+        "span_id": "40c08ea2d46ae01c",
+        "run_id": "batch_b",
+        "suite_id": "contoso-business-suite",
+        "case_id": "contoso-business-suite-batch-b",
+        "target_name": "run",
+        "stage": "package-replay",
+        "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled"
+      },
+      "value_source": "unavailable",
+      "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+    },
+    {
+      "name": "first_failed_boundary",
+      "value": "unavailable",
+      "unit": "n/a",
+      "status": "unavailable",
+      "why": "Prevents downstream missing artifacts from being mistaken for the root cause.",
+      "labels": {
+        "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+        "span_id": "40c08ea2d46ae01c",
+        "run_id": "batch_b",
+        "suite_id": "contoso-business-suite",
+        "case_id": "contoso-business-suite-batch-b",
+        "target_name": "run",
+        "stage": "package-replay",
+        "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled"
+      },
+      "value_source": "unavailable",
+      "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+    },
+    {
+      "name": "root_blocker",
+      "value": "unavailable",
+      "unit": "n/a",
+      "status": "unavailable",
+      "why": "Names the owning layer for the next bounded fix.",
+      "labels": {
+        "trace_id": "4b44bc57e2872fb8b2a3d39dcfd8c6c6",
+        "span_id": "40c08ea2d46ae01c",
+        "run_id": "batch_b",
+        "suite_id": "contoso-business-suite",
+        "case_id": "contoso-business-suite-batch-b",
+        "target_name": "run",
+        "stage": "package-replay",
+        "claim_ceiling": "partial package-scale diagnostic replay; closeout stalled"
+      },
+      "value_source": "unavailable",
+      "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+    }
+  ],
+  "claim_ceiling": "telemetry is diagnostic evidence only"
+}

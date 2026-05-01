@@ -1,0 +1,100 @@
+{
+  "dll_name": "spectrum_audit_trace.dll",
+  "fixture_id": "spectrum_audit_trace_contract_overlay",
+  "functions": [
+    {
+      "name": "SP_InvalidateUntrustedBranch",
+      "benchmark_role": "hard01_branch_audit_gate",
+      "expected_outcome_class": "verified_success",
+      "required_preconditions": [
+        "SP_SelectTrustedBranch"
+      ],
+      "functional_precondition_example": "SP_SelectTrustedBranch(...) -> out_trusted_branch_id='sp-branch-primary'; out_rejected_branch_id='sp-branch-replay'",
+      "canonical_args": {
+        "trusted_branch_id": "sp-branch-primary",
+        "rejected_branch_id": "sp-branch-replay"
+      },
+      "calling_convention": "cdecl",
+      "return_type": "int",
+      "signature": "int __cdecl SP_InvalidateUntrustedBranch(const char* trusted_branch_id, const char* rejected_branch_id, char* out_audit_token, DWORD out_len)",
+      "parameters": [
+        {
+          "name": "trusted_branch_id",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "rejected_branch_id",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "out_audit_token",
+          "type": "char*",
+          "resolved_type": "char*",
+          "direction": "out",
+          "json_type": "string"
+        },
+        {
+          "name": "out_len",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer"
+        }
+      ]
+    },
+    {
+      "name": "SP_RecordStaleAttestationInvalidation",
+      "benchmark_role": "hard02_stale_attestation_audit_gate",
+      "expected_outcome_class": "verified_success",
+      "required_preconditions": [
+        "SP_InvalidateStaleAttestedRelease"
+      ],
+      "functional_precondition_example": "SP_InvalidateStaleAttestedRelease(...) -> out_stale_attestation_token='sp-att-stale-16215'; out_stale_reason='freshness_gap|epoch=20260408|packet=sp-att-ORD-001-64-gate-packet'",
+      "canonical_args": {
+        "stale_attestation_token": "sp-att-stale-16215",
+        "stale_reason": "freshness_gap|epoch=20260408|packet=sp-att-ORD-001-64-gate-packet",
+        "out_audit_token": "",
+        "out_len": 256
+      },
+      "calling_convention": "cdecl",
+      "return_type": "int",
+      "signature": "int __cdecl SP_RecordStaleAttestationInvalidation(const char* stale_attestation_token, const char* stale_reason, char* out_audit_token, DWORD out_len)",
+      "parameters": [
+        {
+          "name": "stale_attestation_token",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "stale_reason",
+          "type": "const char*",
+          "resolved_type": "const char*",
+          "direction": "in",
+          "json_type": "string"
+        },
+        {
+          "name": "out_audit_token",
+          "type": "char*",
+          "resolved_type": "char*",
+          "direction": "out",
+          "json_type": "string"
+        },
+        {
+          "name": "out_len",
+          "type": "DWORD",
+          "resolved_type": "DWORD",
+          "direction": "in",
+          "json_type": "integer"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1048 @@
+{
+  "schema_version": "creator_replay_run_v1",
+  "id": "hard01",
+  "label": "Hard01",
+  "family": "spectrum_transaction_release_settlement_suite",
+  "tier": "hard01",
+  "difficulty": "Enterprise survivability pressure",
+  "why_it_matters": "Exercises branch trust, replay/invalidation evidence, and multi-target semantic continuity.",
+  "challenge_profile": {
+    "headline": "Branch ambiguity and replay trust",
+    "pipeline_pressure": "Can the product route preserve trusted and rejected object evidence through enterprise survivability pressure?",
+    "breakpoint": "Branch trust, invalidation authority, multi-target semantic continuity, and closeout claim ceilings.",
+    "operator_question": "Can the run prove object-bound corrective authority without turning diagnostic evidence into product proof?",
+    "real_job_ids": [
+      "db298a7c",
+      "0d3f6bbd",
+      "b2dfccf9",
+      "654ae76b",
+      "03936c3f",
+      "58175314",
+      "47f7f132",
+      "9b113aec",
+      "29156ec8"
+    ],
+    "job_id_note": "9 real local job ids replayed from pinned artifacts."
+  },
+  "source_root": "configs/regression/pinned_baselines/spectrum_transaction_release_settlement_suite/hard-01/20260425-111313",
+  "generated_from": "real pinned baseline artifacts",
+  "claim_ceiling": "product-green baseline replay",
+  "green_contract_level": "product_green",
+  "safe_to_compare": true,
+  "route_authority_present": true,
+  "next_action": "compare/replay evidence",
+  "summary": {
+    "suite_id": "spectrum_transaction_release_settlement_suite",
+    "case_id": "hard-01-product-route",
+    "entry_surface": "upload",
+    "green_contract_level": "product_green",
+    "product_green_eligible": true,
+    "route_authority_present": true,
+    "safe_to_compare": true,
+    "semantic_proof_satisfied": true,
+    "authoritative_proving": true,
+    "blocking_signal": "",
+    "target_count": 9,
+    "total_duration_sec": 1221.16,
+    "verified_total": 9,
+    "discovered_total": 9,
+    "first_failed_boundary": "none"
+  },
+  "targets": [
+    {
+      "run_id": "01-session_bootstrap",
+      "target": "session_bootstrap",
+      "binary_name": "spectrum_session_bootstrap",
+      "job_id": "db298a7c",
+      "status": "ok",
+      "duration_sec": 100.87,
+      "valid_run": true,
+      "safe_to_compare": true,
+      "authoritative_proving": true,
+      "route_authority_present": true,
+      "semantic_proof_satisfied": true,
+      "required_semantic_checkpoint": "SP_OpenOperatorSession",
+      "verified_count": 1,
+      "total_count": 1,
+      "coverage_pct": 100.0,
+      "failure_domain": "",
+      "binary_hash": "63319bdfc837ab50",
+      "claim_ceiling": "decision-bearing run replay"
+    },
+    {
+      "run_id": "02-reservation_stage",
+      "target": "reservation_stage",
+      "binary_name": "spectrum_reservation_stage",
+      "job_id": "0d3f6bbd",
+      "status": "ok",
+      "duration_sec": 117.34,
+      "valid_run": true,
+      "safe_to_compare": true,
+      "authoritative_proving": true,
+      "route_authority_present": true,
+      "semantic_proof_satisfied": true,
+      "required_semantic_checkpoint": "SP_IssueReleaseHold",
+      "verified_count": 1,
+      "total_count": 1,
+      "coverage_pct": 100.0,
+      "failure_domain": "",
+      "binary_hash": "359ed9a93e7234e5",
+      "claim_ceiling": "decision-bearing run replay"
+    },
+    {
+      "run_id": "03-dispatch_preview",
+      "target": "dispatch_preview",
+      "binary_name": "spectrum_dispatch_preview",
+      "job_id": "b2dfccf9",
+      "status": "ok",
+      "duration_sec": 116.89,
+      "valid_run": true,
+      "safe_to_compare": true,
+      "authoritative_proving": true,
+      "route_authority_present": true,
+      "semantic_proof_satisfied": true,
+      "required_semantic_checkpoint": "SP_PrepareReleasePreview",
+      "verified_count": 1,
+      "total_count": 1,
+      "coverage_pct": 100.0,
+      "failure_domain": "",
+      "binary_hash": "78c3cadd20d4dedb",
+      "claim_ceiling": "decision-bearing run replay"
+    },
+    {
+      "run_id": "04-fee_quote",
+      "target": "fee_quote",
+      "binary_name": "spectrum_fee_quote",
+      "job_id": "654ae76b",
+      "status": "ok",
+      "duration_sec": 113.34,
+      "valid_run": true,
+      "safe_to_compare": true,
+      "authoritative_proving": true,
+      "route_authority_present": true,
+      "semantic_proof_satisfied": true,
+      "required_semantic_checkpoint": "SP_StageReleaseFeeQuote",
+      "verified_count": 1,
+      "total_count": 1,
+      "coverage_pct": 100.0,
+      "failure_domain": "",
+      "binary_hash": "b5f770c7479daad0",
+      "claim_ceiling": "decision-bearing run replay"
+    },
+    {
+      "run_id": "05-attestation_stage",
+      "target": "attestation_stage",
+      "binary_name": "spectrum_attestation_stage",
+      "job_id": "03936c3f",
+      "status": "ok",
+      "duration_sec": 155.8,
+      "valid_run": true,
+      "safe_to_compare": true,
+      "authoritative_proving": true,
+      "route_authority_present": true,
+      "semantic_proof_satisfied": true,
+      "required_semantic_checkpoint": "SP_EmitReleaseAttestation",
+      "verified_count": 1,
+      "total_count": 1,
+      "coverage_pct": 100.0,
+      "failure_domain": "",
+      "binary_hash": "cf2fa3013ecef68a",
+      "claim_ceiling": "decision-bearing run replay"
+    },
+    {
+      "run_id": "06-release_commit",
+      "target": "release_commit",
+      "binary_name": "spectrum_release_commit",
+      "job_id": "58175314",
+      "status": "ok",
+      "duration_sec": 153.79,
+      "valid_run": true,
+      "safe_to_compare": true,
+      "authoritative_proving": true,
+      "route_authority_present": true,
+      "semantic_proof_satisfied": true,
+      "required_semantic_checkpoint": "SP_CommitRelease",
+      "verified_count": 1,
+      "total_count": 1,
+      "coverage_pct": 100.0,
+      "failure_domain": "",
+      "binary_hash": "36a23a111a2de857",
+      "claim_ceiling": "decision-bearing run replay"
+    },
+    {
+      "run_id": "07-replay_branch",
+      "target": "replay_branch",
+      "binary_name": "spectrum_replay_branch",
+      "job_id": "47f7f132",
+      "status": "ok",
+      "duration_sec": 177.96,
+      "valid_run": true,
+      "safe_to_compare": true,
+      "authoritative_proving": true,
+      "route_authority_present": true,
+      "semantic_proof_satisfied": true,
+      "required_semantic_checkpoint": "SP_ReplayReleaseBranch",
+      "verified_count": 1,
+      "total_count": 1,
+      "coverage_pct": 100.0,
+      "failure_domain": "",
+      "binary_hash": "8057807df4732a49",
+      "claim_ceiling": "decision-bearing run replay"
+    },
+    {
+      "run_id": "08-settlement_reconcile",
+      "target": "settlement_reconcile",
+      "binary_name": "spectrum_settlement_reconcile",
+      "job_id": "9b113aec",
+      "status": "ok",
+      "duration_sec": 164.28,
+      "valid_run": true,
+      "safe_to_compare": true,
+      "authoritative_proving": true,
+      "route_authority_present": true,
+      "semantic_proof_satisfied": true,
+      "required_semantic_checkpoint": "SP_SelectTrustedBranch",
+      "verified_count": 1,
+      "total_count": 1,
+      "coverage_pct": 100.0,
+      "failure_domain": "",
+      "binary_hash": "26a0abed588b9197",
+      "claim_ceiling": "decision-bearing run replay"
+    },
+    {
+      "run_id": "09-audit_trace",
+      "target": "audit_trace",
+      "binary_name": "spectrum_audit_trace",
+      "job_id": "29156ec8",
+      "status": "ok",
+      "duration_sec": 120.89,
+      "valid_run": true,
+      "safe_to_compare": true,
+      "authoritative_proving": true,
+      "route_authority_present": true,
+      "semantic_proof_satisfied": true,
+      "required_semantic_checkpoint": "SP_InvalidateUntrustedBranch",
+      "verified_count": 1,
+      "total_count": 1,
+      "coverage_pct": 100.0,
+      "failure_domain": "",
+      "binary_hash": "27f98ec4ea26e876",
+      "claim_ceiling": "decision-bearing run replay"
+    }
+  ],
+  "symbol_flow": {
+    "expected": [
+      "SP_OpenOperatorSession",
+      "SP_IssueReleaseHold",
+      "SP_EmitReleaseAttestation",
+      "SP_CommitRelease",
+      "SP_ReplayReleaseBranch",
+      "SP_SelectTrustedBranch",
+      "SP_InvalidateUntrustedBranch"
+    ],
+    "discovered": [
+      "SP_OpenOperatorSession",
+      "SP_IssueReleaseHold",
+      "SP_EmitReleaseAttestation",
+      "SP_CommitRelease",
+      "SP_ReplayReleaseBranch",
+      "SP_SelectTrustedBranch",
+      "SP_InvalidateUntrustedBranch"
+    ],
+    "semantic": [
+      "SP_OpenOperatorSession",
+      "SP_IssueReleaseHold",
+      "SP_EmitReleaseAttestation",
+      "SP_CommitRelease",
+      "SP_ReplayReleaseBranch",
+      "SP_SelectTrustedBranch",
+      "SP_InvalidateUntrustedBranch"
+    ],
+    "support_targets": [
+      "dispatch_preview",
+      "fee_quote"
+    ]
+  },
+  "artifact_summary": [
+    {
+      "name": "compiled-ingest-summary.json",
+      "kind": "summary",
+      "path": "configs/regression/pinned_baselines/spectrum_transaction_release_settlement_suite/hard-01/20260425-111313/compiled-ingest-summary.json",
+      "included": "derived fields only",
+      "bytes": 701126
+    },
+    {
+      "name": "compiled-ingest-compare-report.json",
+      "kind": "comparison",
+      "path": "configs/regression/pinned_baselines/spectrum_transaction_release_settlement_suite/hard-01/20260425-111313/compiled-ingest-compare-report.json",
+      "included": "derived fields only",
+      "bytes": 277882
+    }
+  ],
+  "stage_artifacts": [
+    {
+      "stage": "S00",
+      "name": "Compiled/no-source admission",
+      "purpose": "Accept the compiled binary fixture as the product-route input and keep authored source out of the route.",
+      "consumes": [
+        {
+          "stage": "S00",
+          "role": "consume",
+          "name": "compiled binary fixture input",
+          "kind": "input boundary",
+          "status": "pass",
+          "availability": "described_not_downloaded",
+          "value_source": "actual_artifact",
+          "proof_meaning": "The replay represents compiled/no-source analysis. Public demo does not publish binaries."
+        },
+        {
+          "stage": "S00",
+          "role": "consume",
+          "name": "synthetic source ground truth",
+          "kind": "evaluation-only reference",
+          "status": "warn",
+          "availability": "not_route_input",
+          "value_source": "derived_summary",
+          "proof_meaning": "Source exists to judge fixture correctness, but the product route does not receive it.",
+          "unavailable_reason": "Not exposed as product-route evidence because it is not the route input."
+        }
+      ],
+      "emits": [
+        {
+          "stage": "S00",
+          "role": "emit",
+          "name": "compiled admission summary",
+          "kind": "sanitized stage summary",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "Records the no-source route boundary used by the replay.",
+          "link": "data/runs/hard01/stage-artifacts.json"
+        }
+      ],
+      "proves": [
+        {
+          "stage": "S00",
+          "role": "prove",
+          "name": "source boundary",
+          "kind": "claim guard",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "Prevents the demo from overclaiming source-assisted recovery.",
+          "link": "data/runs/hard01/stage-artifacts.md"
+        }
+      ]
+    },
+    {
+      "stage": "S00B-S02",
+      "name": "Ghidra-backed route authority",
+      "purpose": "Prove the intended compiled-analysis route was entered before downstream artifacts are trusted.",
+      "consumes": [
+        {
+          "stage": "S00B-S02",
+          "role": "consume",
+          "name": "compiled ingest summary",
+          "kind": "pinned baseline summary",
+          "status": "pass",
+          "availability": "derived_fields_only",
+          "value_source": "actual_artifact",
+          "proof_meaning": "Provides sanitized route, lane, bridge, and readiness fields.",
+          "link": "data/runs/hard01/stage-artifacts.json",
+          "path": "configs/regression/pinned_baselines/spectrum_transaction_release_settlement_suite/hard-01/20260425-111313/compiled-ingest-summary.json"
+        }
+      ],
+      "emits": [
+        {
+          "stage": "S00B-S02",
+          "role": "emit",
+          "name": "route authority evidence",
+          "kind": "authority packet",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "route_authority_present=True.",
+          "link": "data/runs/hard01/stage-artifacts.json"
+        },
+        {
+          "stage": "S00B-S02",
+          "role": "emit",
+          "name": "recovery backend boundary",
+          "kind": "tool-route marker",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "ghidra_required=True.",
+          "link": "data/runs/hard01/stage-artifacts.md"
+        }
+      ],
+      "proves": [
+        {
+          "stage": "S00B-S02",
+          "role": "prove",
+          "name": "compiled route trust",
+          "kind": "claim precondition",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "Downstream target evidence can be read only if route authority is present.",
+          "link": "data/runs/hard01/stage-artifacts.json"
+        }
+      ]
+    },
+    {
+      "stage": "S02-S05",
+      "name": "Target analysis runs",
+      "purpose": "Replay per-target analysis results and expose the recovered run evidence without publishing raw sessions.",
+      "consumes": [
+        {
+          "stage": "S02-S05",
+          "role": "consume",
+          "name": "target run records",
+          "kind": "pinned baseline run list",
+          "status": "pass",
+          "availability": "derived_fields_only",
+          "value_source": "actual_artifact",
+          "proof_meaning": "9 target records available in sanitized form.",
+          "link": "data/runs/hard01/stage-artifacts.json"
+        }
+      ],
+      "emits": [
+        {
+          "stage": "S02-S05",
+          "role": "emit",
+          "name": "target evidence table",
+          "kind": "sanitized run evidence",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "9/9 target records are valid_run=true.",
+          "link": "data/runs/hard01/stage-artifacts.json"
+        },
+        {
+          "stage": "S02-S05",
+          "role": "emit",
+          "name": "recovered symbols and invocables",
+          "kind": "derived recovery evidence",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "Recovered symbol flow is summarized for inspection without raw analyzer output.",
+          "link": "data/runs/hard01/stage-artifacts.md"
+        }
+      ],
+      "proves": [
+        {
+          "stage": "S02-S05",
+          "role": "prove",
+          "name": "run evidence breadth",
+          "kind": "coverage signal",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "Shows whether the run has enough per-target evidence to support comparison.",
+          "link": "data/runs/hard01/stage-artifacts.json"
+        }
+      ]
+    },
+    {
+      "stage": "S03-S06",
+      "name": "Semantic checkpoint comparison",
+      "purpose": "Compare expected semantic checkpoints against recovered symbols and run evidence.",
+      "consumes": [
+        {
+          "stage": "S03-S06",
+          "role": "consume",
+          "name": "compiled ingest comparison report",
+          "kind": "comparison report",
+          "status": "pass",
+          "availability": "derived_fields_only",
+          "value_source": "actual_artifact",
+          "proof_meaning": "Provides expected, discovered, and semantic symbol-flow summaries.",
+          "link": "data/runs/hard01/stage-artifacts.json",
+          "path": "configs/regression/pinned_baselines/spectrum_transaction_release_settlement_suite/hard-01/20260425-111313/compiled-ingest-compare-report.json"
+        }
+      ],
+      "emits": [
+        {
+          "stage": "S03-S06",
+          "role": "emit",
+          "name": "semantic checkpoint alignment",
+          "kind": "comparison result",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "semantic_checkpoint_alignment_succeeded=True.",
+          "link": "data/runs/hard01/stage-artifacts.json"
+        },
+        {
+          "stage": "S03-S06",
+          "role": "emit",
+          "name": "gap summary",
+          "kind": "failure boundary signal",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "semantic_gaps=0, embodiment_gaps=0.",
+          "link": "data/runs/hard01/stage-artifacts.md"
+        }
+      ],
+      "proves": [
+        {
+          "stage": "S03-S06",
+          "role": "prove",
+          "name": "safe comparison precondition",
+          "kind": "semantic proof",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "Shows whether recovered behavior aligns with the expected checkpoint sequence.",
+          "link": "data/runs/hard01/stage-artifacts.json"
+        }
+      ]
+    },
+    {
+      "stage": "S07",
+      "name": "Claim ceiling and closeout",
+      "purpose": "Emit the final replay claim ceiling, comparability state, and next action.",
+      "consumes": [
+        {
+          "stage": "S07",
+          "role": "consume",
+          "name": "stage trace and metrics",
+          "kind": "OpenTelemetry-shaped sidecars",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "Final claim uses sanitized trace, metrics, and comparison summaries.",
+          "link": "data/runs/hard01/run-trace.json"
+        }
+      ],
+      "emits": [
+        {
+          "stage": "S07",
+          "role": "emit",
+          "name": "final claim ceiling",
+          "kind": "closeout decision",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "product-green baseline replay",
+          "link": "data/runs/hard01/run-metrics.json"
+        },
+        {
+          "stage": "S07",
+          "role": "emit",
+          "name": "first failed boundary",
+          "kind": "blocker routing",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "first_failed_boundary=none.",
+          "link": "data/runs/hard01/stage-artifacts.md"
+        }
+      ],
+      "proves": [
+        {
+          "stage": "S07",
+          "role": "prove",
+          "name": "safe-to-compare state",
+          "kind": "claim guard",
+          "status": "pass",
+          "availability": "available",
+          "value_source": "derived_summary",
+          "proof_meaning": "safe_to_compare=True.",
+          "link": "data/runs/hard01/stage-artifacts.json"
+        }
+      ]
+    }
+  ],
+  "pipeline_mechanics": [
+    {
+      "id": "input_boundary",
+      "title": "Input Boundary",
+      "status": "pass",
+      "summary": "Compiled/no-source input accepted; synthetic source is evaluation-only and not used by the product route.",
+      "facts": [
+        {
+          "label": "entry surface",
+          "value": "upload"
+        },
+        {
+          "label": "source used by product route",
+          "value": "no"
+        },
+        {
+          "label": "targets represented",
+          "value": "9"
+        }
+      ],
+      "evidence_source": "compiled-ingest-summary"
+    },
+    {
+      "id": "route_authority",
+      "title": "Route Authority",
+      "status": "pass",
+      "summary": "Checks whether the run entered the intended Ghidra-backed compiled-analysis path before downstream evidence is trusted.",
+      "facts": [
+        {
+          "label": "Ghidra-backed route entered",
+          "value": "yes"
+        },
+        {
+          "label": "route authority artifact present",
+          "value": "yes"
+        },
+        {
+          "label": "PE/static-only evidence can satisfy product-green",
+          "value": "no"
+        }
+      ],
+      "evidence_source": "compiled-ingest-summary"
+    },
+    {
+      "id": "target_analysis",
+      "title": "Target Analysis",
+      "status": "pass",
+      "summary": "Shows recovered callable surfaces and target evidence without publishing raw analyzer sessions.",
+      "facts": [
+        {
+          "label": "targets analyzed",
+          "value": "9"
+        },
+        {
+          "label": "invocables discovered",
+          "value": "9"
+        },
+        {
+          "label": "verified evidence count",
+          "value": "9"
+        }
+      ],
+      "evidence_source": "stage-artifacts"
+    },
+    {
+      "id": "semantic_check",
+      "title": "Semantic Check",
+      "status": "pass",
+      "summary": "Compares recovered behavior against the expected fixture contract and records any semantic gaps.",
+      "facts": [
+        {
+          "label": "expected fixture contract exists",
+          "value": "yes"
+        },
+        {
+          "label": "recovered behavior aligned",
+          "value": "yes"
+        },
+        {
+          "label": "semantic gaps",
+          "value": "0"
+        },
+        {
+          "label": "embodiment gaps",
+          "value": "0"
+        }
+      ],
+      "evidence_source": "compiled-ingest-compare-report"
+    },
+    {
+      "id": "closeout_trust_gate",
+      "title": "Closeout / Trust Gate",
+      "status": "pass",
+      "summary": "Names the legal claim ceiling, comparison state, first failed boundary, blocker, and next action.",
+      "facts": [
+        {
+          "label": "claim ceiling",
+          "value": "product-green baseline replay"
+        },
+        {
+          "label": "safe_to_compare",
+          "value": "true"
+        },
+        {
+          "label": "product_green_eligible",
+          "value": "true"
+        },
+        {
+          "label": "first_failed_boundary",
+          "value": "none"
+        },
+        {
+          "label": "root_blocker",
+          "value": "none"
+        }
+      ],
+      "evidence_source": "run-trace"
+    }
+  ],
+  "verifiability": [
+    {
+      "name": "Route proof",
+      "status": "pass",
+      "question": "Did the run prove it entered the intended compiled-analysis/Ghidra route?",
+      "evidence_source": "compiled-ingest-summary",
+      "meaning": "route_authority_present=true"
+    },
+    {
+      "name": "Artifact proof",
+      "status": "pass",
+      "question": "Did required stages emit durable derived artifacts?",
+      "evidence_source": "stage-artifacts",
+      "meaning": "Sanitized consumed/emitted/proof sidecars cover S00, S00B-S02, S02-S05, S03-S06, and S07."
+    },
+    {
+      "name": "Comparability proof",
+      "status": "pass",
+      "question": "Is this comparable evidence, or only diagnostic/blocker evidence?",
+      "evidence_source": "run-trace",
+      "meaning": "safe_to_compare=true"
+    },
+    {
+      "name": "Semantic proof",
+      "status": "pass",
+      "question": "Did recovered behavior satisfy the fixture contract?",
+      "evidence_source": "compiled-ingest-compare-report",
+      "meaning": "semantic_checkpoint_alignment_succeeded=true"
+    },
+    {
+      "name": "Closeout proof",
+      "status": "pass",
+      "question": "Did S07 produce claim ceiling, blocker, and next action?",
+      "evidence_source": "run-trace",
+      "meaning": "product-green baseline replay; first_failed_boundary=none; safe_to_compare=true"
+    },
+    {
+      "name": "Failure localization",
+      "status": "pass",
+      "question": "If not green, what stage/window owns the first blocker?",
+      "evidence_source": "run-trace",
+      "meaning": "first_failed_boundary=none; root_blocker=none"
+    }
+  ],
+  "ground_truth_note": "Synthetic fixture source exists for evaluation, but this replay represents a compiled/no-source product route.",
+  "otel": {
+    "trace_id": "3ec0e905e25bc301b4f4f7a4ab370f80",
+    "claim_ceiling": "telemetry is diagnostic evidence only",
+    "spans": [
+      {
+        "span_id": "134fc92dd2a977cf",
+        "name": "Compiled/no-source admission",
+        "stage": "S00",
+        "duration_sec": 0,
+        "status": "pass",
+        "message": "Fixture accepted as compiled binary input; source is not used by the product route.",
+        "trace_id": "3ec0e905e25bc301b4f4f7a4ab370f80",
+        "span_key": "admission",
+        "claim_ceiling": "product-green baseline replay",
+        "value_source": "derived_summary",
+        "run_id": "hard01",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "hard-01-product-route",
+        "target_name": "run"
+      },
+      {
+        "span_id": "aac924f7f22386f1",
+        "name": "Ghidra-backed route authority",
+        "stage": "S00B-S02",
+        "duration_sec": 427.41,
+        "status": "pass",
+        "message": "Route authority proves the intended compiled analysis path was entered.",
+        "trace_id": "3ec0e905e25bc301b4f4f7a4ab370f80",
+        "span_key": "route_authority",
+        "claim_ceiling": "product-green baseline replay",
+        "value_source": "derived_summary",
+        "run_id": "hard01",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "hard-01-product-route",
+        "target_name": "run"
+      },
+      {
+        "span_id": "ffe784c8815d7177",
+        "name": "Target analysis runs",
+        "stage": "S02-S05",
+        "duration_sec": 1221.16,
+        "status": "pass",
+        "message": "9 target runs replayed from pinned baseline artifacts.",
+        "trace_id": "3ec0e905e25bc301b4f4f7a4ab370f80",
+        "span_key": "target_runs",
+        "claim_ceiling": "product-green baseline replay",
+        "value_source": "derived_summary",
+        "run_id": "hard01",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "hard-01-product-route",
+        "target_name": "run"
+      },
+      {
+        "span_id": "3c870ba5d7431fee",
+        "name": "Semantic checkpoint comparison",
+        "stage": "S03-S06",
+        "duration_sec": 61.06,
+        "status": "pass",
+        "message": "Expected semantic checkpoints were compared against recovered symbols and run evidence.",
+        "trace_id": "3ec0e905e25bc301b4f4f7a4ab370f80",
+        "span_key": "semantic_compare",
+        "claim_ceiling": "product-green baseline replay",
+        "value_source": "derived_summary",
+        "run_id": "hard01",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "hard-01-product-route",
+        "target_name": "run"
+      },
+      {
+        "span_id": "9fb4a160af620917",
+        "name": "Claim ceiling and closeout",
+        "stage": "S07",
+        "duration_sec": 0,
+        "status": "pass",
+        "message": "product-green baseline replay",
+        "trace_id": "3ec0e905e25bc301b4f4f7a4ab370f80",
+        "span_key": "final_claim",
+        "claim_ceiling": "product-green baseline replay",
+        "value_source": "derived_summary",
+        "run_id": "hard01",
+        "suite_id": "spectrum_transaction_release_settlement_suite",
+        "case_id": "hard-01-product-route",
+        "target_name": "run"
+      }
+    ],
+    "metrics": [
+      {
+        "name": "mcp_factory.pipeline.stage_span.duration",
+        "value": 1221.16,
+        "unit": "sec",
+        "status": "pass",
+        "why": "Shows where time is spent so expensive reruns are not used blindly.",
+        "labels": {
+          "trace_id": "3ec0e905e25bc301b4f4f7a4ab370f80",
+          "span_id": "acab12cae5c210cc",
+          "run_id": "hard01",
+          "suite_id": "spectrum_transaction_release_settlement_suite",
+          "case_id": "hard-01-product-route",
+          "target_name": "run",
+          "stage": "replay",
+          "claim_ceiling": "product-green baseline replay",
+          "run": "hard01",
+          "span": "target_runs"
+        },
+        "value_source": "derived_summary"
+      },
+      {
+        "name": "mcp_factory.run.status_staleness",
+        "value": 0,
+        "unit": "sec",
+        "status": "pass",
+        "why": "Tells an operator whether a run is alive, stale, or misleading.",
+        "labels": {
+          "trace_id": "3ec0e905e25bc301b4f4f7a4ab370f80",
+          "span_id": "acab12cae5c210cc",
+          "run_id": "hard01",
+          "suite_id": "spectrum_transaction_release_settlement_suite",
+          "case_id": "hard-01-product-route",
+          "target_name": "run",
+          "stage": "replay",
+          "claim_ceiling": "product-green baseline replay",
+          "terminal": "true"
+        },
+        "value_source": "derived_summary"
+      },
+      {
+        "name": "mcp_factory.artifacts.required_emission_lag.duration",
+        "value": 0,
+        "unit": "sec",
+        "status": "pass",
+        "why": "Separates a completed stage from evidence that is actually readable.",
+        "labels": {
+          "trace_id": "3ec0e905e25bc301b4f4f7a4ab370f80",
+          "span_id": "acab12cae5c210cc",
+          "run_id": "hard01",
+          "suite_id": "spectrum_transaction_release_settlement_suite",
+          "case_id": "hard-01-product-route",
+          "target_name": "run",
+          "stage": "replay",
+          "claim_ceiling": "product-green baseline replay",
+          "source": "pinned_baseline_artifacts"
+        },
+        "value_source": "derived_summary"
+      },
+      {
+        "name": "first_failed_boundary",
+        "value": "none",
+        "unit": "boundary",
+        "status": "pass",
+        "why": "Prevents downstream missing artifacts from being mistaken for the root cause.",
+        "labels": {
+          "trace_id": "3ec0e905e25bc301b4f4f7a4ab370f80",
+          "span_id": "acab12cae5c210cc",
+          "run_id": "hard01",
+          "suite_id": "spectrum_transaction_release_settlement_suite",
+          "case_id": "hard-01-product-route",
+          "target_name": "run",
+          "stage": "replay",
+          "claim_ceiling": "product-green baseline replay",
+          "semantic_gap_count": "0",
+          "embodiment_gap_count": "0"
+        },
+        "value_source": "derived_summary"
+      },
+      {
+        "name": "root_blocker",
+        "value": "none",
+        "unit": "blocker",
+        "status": "pass",
+        "why": "Names the owning layer for the next bounded fix.",
+        "labels": {
+          "trace_id": "3ec0e905e25bc301b4f4f7a4ab370f80",
+          "span_id": "acab12cae5c210cc",
+          "run_id": "hard01",
+          "suite_id": "spectrum_transaction_release_settlement_suite",
+          "case_id": "hard-01-product-route",
+          "target_name": "run",
+          "stage": "replay",
+          "claim_ceiling": "product-green baseline replay"
+        },
+        "value_source": "derived_summary"
+      },
+      {
+        "name": "candidate_comparability_state",
+        "value": "comparable",
+        "unit": "state",
+        "status": "pass",
+        "why": "Distinguishes diagnostic output from evidence that can support comparison.",
+        "labels": {
+          "trace_id": "3ec0e905e25bc301b4f4f7a4ab370f80",
+          "span_id": "acab12cae5c210cc",
+          "run_id": "hard01",
+          "suite_id": "spectrum_transaction_release_settlement_suite",
+          "case_id": "hard-01-product-route",
+          "target_name": "run",
+          "stage": "replay",
+          "claim_ceiling": "product-green baseline replay",
+          "authoritative_proving": "true"
+        },
+        "value_source": "derived_summary"
+      },
+      {
+        "name": "safe_to_compare",
+        "value": true,
+        "unit": "bool",
+        "status": "pass",
+        "why": "Protects against false benchmark or regression claims.",
+        "labels": {
+          "trace_id": "3ec0e905e25bc301b4f4f7a4ab370f80",
+          "span_id": "acab12cae5c210cc",
+          "run_id": "hard01",
+          "suite_id": "spectrum_transaction_release_settlement_suite",
+          "case_id": "hard-01-product-route",
+          "target_name": "run",
+          "stage": "replay",
+          "claim_ceiling": "product-green baseline replay",
+          "green_contract_level": "product_green"
+        },
+        "value_source": "derived_summary"
+      },
+      {
+        "name": "next_action_confidence",
+        "value": "high",
+        "unit": "confidence",
+        "status": "pass",
+        "why": "Tells the operator whether to fix, rerun, inspect, or stop.",
+        "labels": {
+          "trace_id": "3ec0e905e25bc301b4f4f7a4ab370f80",
+          "span_id": "acab12cae5c210cc",
+          "run_id": "hard01",
+          "suite_id": "spectrum_transaction_release_settlement_suite",
+          "case_id": "hard-01-product-route",
+          "target_name": "run",
+          "stage": "replay",
+          "claim_ceiling": "product-green baseline replay",
+          "next_action": "compare/replay evidence"
+        },
+        "value_source": "derived_summary"
+      },
+      {
+        "name": "mcp_factory.runtime.discovery_child_wait.duration",
+        "value": "unavailable",
+        "unit": "n/a",
+        "status": "unavailable",
+        "why": "Separates analyzer child wait from bridge wait, prelaunch, and closeout.",
+        "labels": {
+          "trace_id": "3ec0e905e25bc301b4f4f7a4ab370f80",
+          "span_id": "acab12cae5c210cc",
+          "run_id": "hard01",
+          "suite_id": "spectrum_transaction_release_settlement_suite",
+          "case_id": "hard-01-product-route",
+          "target_name": "run",
+          "stage": "replay",
+          "claim_ceiling": "product-green baseline replay"
+        },
+        "value_source": "unavailable",
+        "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+      },
+      {
+        "name": "mcp_factory.runtime.subprocess_interrupts.total",
+        "value": "unavailable",
+        "unit": "n/a",
+        "status": "unavailable",
+        "why": "Shows whether failures are clustering in runtime or lane infrastructure instead of product behavior.",
+        "labels": {
+          "trace_id": "3ec0e905e25bc301b4f4f7a4ab370f80",
+          "span_id": "acab12cae5c210cc",
+          "run_id": "hard01",
+          "suite_id": "spectrum_transaction_release_settlement_suite",
+          "case_id": "hard-01-product-route",
+          "target_name": "run",
+          "stage": "replay",
+          "claim_ceiling": "product-green baseline replay"
+        },
+        "value_source": "unavailable",
+        "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+      },
+      {
+        "name": "mcp_factory.pipeline.checkpoint.save.duration",
+        "value": "unavailable",
+        "unit": "n/a",
+        "status": "unavailable",
+        "why": "Shows whether checkpoint persistence is cheap enough for fast iteration.",
+        "labels": {
+          "trace_id": "3ec0e905e25bc301b4f4f7a4ab370f80",
+          "span_id": "acab12cae5c210cc",
+          "run_id": "hard01",
+          "suite_id": "spectrum_transaction_release_settlement_suite",
+          "case_id": "hard-01-product-route",
+          "target_name": "run",
+          "stage": "replay",
+          "claim_ceiling": "product-green baseline replay"
+        },
+        "value_source": "unavailable",
+        "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+      },
+      {
+        "name": "mcp_factory.pipeline.checkpoint.resume_seeded_findings",
+        "value": "unavailable",
+        "unit": "n/a",
+        "status": "unavailable",
+        "why": "Shows how much downstream work checkpoint resume avoided.",
+        "labels": {
+          "trace_id": "3ec0e905e25bc301b4f4f7a4ab370f80",
+          "span_id": "acab12cae5c210cc",
+          "run_id": "hard01",
+          "suite_id": "spectrum_transaction_release_settlement_suite",
+          "case_id": "hard-01-product-route",
+          "target_name": "run",
+          "stage": "replay",
+          "claim_ceiling": "product-green baseline replay"
+        },
+        "value_source": "unavailable",
+        "unavailable_reason": "The static replay artifacts do not contain this runtime measurement yet."
+      }
+    ]
+  },
+  "links": {
+    "run_trace": "data/runs/hard01/run-trace.json",
+    "run_metrics": "data/runs/hard01/run-metrics.json",
+    "run_trace_md": "data/runs/hard01/run-trace.md",
+    "stage_artifacts": "data/runs/hard01/stage-artifacts.json",
+    "stage_artifacts_md": "data/runs/hard01/stage-artifacts.md"
+  }
+}
